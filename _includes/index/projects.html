@@ -8,10 +8,10 @@
 
 
 
-  {%- if site.projects and site.projects.size>0 %}
-    {% for p in site.projects | limit:5 %}
-      {% assign rtlCheck = forloop.index | modulo: 2 %}
-      {% if rtlCheck == 1 %}
+  {%- if site.projects and site.projects.size>0 -%}
+    {%- for p in site.projects | limit:5 -%}
+      {%- assign rtlCheck = forloop.index | modulo: 2 -%}
+      {%- if rtlCheck == 1 -%}
 
 
       <div class="project-card-holder d-flex justify-content-start">
@@ -19,35 +19,35 @@
         <div class="bg-body-tertiary project-card-left overflow-hidden">
           <div class="my-4 px-6 py-3 mx-auto text-center">
             <h2 class="display-5">{{p.name}}</h2>
-            {% if p.subHeading %}
+            {%- if p.subHeading -%}
             <p class="lead">{{p.subHeading | strip_html | truncate: 35, " " }}</p> <a class="text-primary" href="{{p.url}}">Continue...</a>
-            {% else %}
+            {%- else -%}
             <p class="lead">{{ p.description | strip_html | truncate: 35, " " }}</p> <a class="text-primary" href="{{p.url}}">Continue...</a>
-            {% endif %}
+            {%- endif -%}
           </div>
           <div class="bg-dark shadow-sm mx-auto d-flex justify-content-center align-items-center flex-column" style="
-          {% if p.image %}
+          {%- if p.image -%}
           background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url({{p.image}}) no-repeat center;
-          {% endif %}
+          {%- endif -%}
           width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
             <p class="text-white px-2 pt-2 w-100 d-flex justify-content-center">
-              {% if p.type %}
+              {%- if p.type -%}
               Project type: {{p.type}}
-              {% endif %}
+              {%- endif -%}
             </p>
 
             <div class="text-white px-2 pt-2 d-flex justify-content-around">
-              {% if p.code_link %}
+              {%- if p.code_link -%}
               <a class="px-2" href="{{ p.code_link }}">Source Code</a>
-              {% else %}
+              {%- else -%}
               <p class="px-2">Code unavailable</p>
-              {% endif %}
+              {%- endif -%}
 
-              {% if p.web_url %}
+              {%- if p.web_url -%}
               <a class="px-2" href="{{ p.web_url }}">Live Demo</a>
-              {% else %}
+              {%- else -%}
               <p class="px-2">LiveDemo unavailable</p>
-              {% endif %}
+              {%- endif -%}
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
 
 
 
-      {% else %}
+      {%- else -%}
         
 
 
@@ -65,35 +65,39 @@
         <div class="bg-primary project-card-right overflow-hidden">
           <div class="my-4 px-6 py-3 mx-auto text-center">
             <h2 class="display-5">{{p.name}}</h2>
-            {% if p.subHeading %}
+            {%- if p.subHeading -%}
             <p class="lead">{{p.subHeading | strip_html | truncate: 35, " " }}</p> <a class="text-white" href="{{p.url}}">Continue...</a>
-            {% else %}
+            {%- else -%}
             <p class="lead">{{ p.description | strip_html | truncate: 35, " " }}</p> <a class="text-white" href="{{p.url}}">Continue...</a>
-            {% endif %}
+            {%- endif -%}
           </div>
           <div class="bg-body-tertiary shadow-sm mx-auto d-flex justify-content-center align-items-center flex-column" style="
-          {% if p.image %}
+          {%- if p.image -%}
+          {%- comment -%}
           background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8)), url({{p.image}}) no-repeat center;
-          {% endif %}
+          {%- endcomment -%}
+          
+          background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url({{p.image}}) no-repeat center;
+          {%- endif -%}
           width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-            <p class="text-dark px-2 pt-2 d-flex justify-content-center">
-              {% if p.type %}
+            <p class="{%- comment -%}text-dark{%- endcomment -%} text-white px-2 pt-2 d-flex justify-content-center">
+              {%- if p.type -%}
               Project type: {{p.type}}
-              {% endif %}
+              {%- endif -%}
             </p>
 
-            <div class="text-dark px-2 pt-2 d-flex justify-content-evenly">
-              {% if p.web_url %}
+            <div class="{%- comment -%}text-dark{%- endcomment -%} text-white px-2 pt-2 d-flex justify-content-evenly">
+              {%- if p.web_url -%}
               <a class="px-2" href="{{ p.web_url }}">Live Demo</a>
-              {% else %}
+              {%- else -%}
               <p class="px-2">LiveDemo unavailable</p>
-              {% endif %}
+              {%- endif -%}
               
-              {% if p.code_link %}
+              {%- if p.code_link -%}
               <a class="px-2" href="{{ p.code_link }}">Source Code</a>
-              {% else %}
+              {%- else -%}
               <p class="px-2">Code unavailable</p>
-              {% endif %}
+              {%- endif -%}
             </div>
           </div>
         </div>
@@ -105,9 +109,9 @@
 
 
 
-      {% endif %}
+      {%- endif -%}
 
-    {% endfor %}
+    {%- endfor -%}
 
     
     <a class="h2 text-center d-flex justify-content-center py-8 mb-0" href="/projects">
@@ -118,9 +122,9 @@
     </a>
 
 
-  {%- else %}
+  {%- else -%}
     <p>baking up some projects</p>
-  {%- endif %}
+  {%- endif -%}
 
 
 
@@ -159,42 +163,42 @@
 
 
 
-  {% comment %}
+  {%- comment -%}
 
-  {% if site.projects and site.projects.size>0 %}
+  {%- if site.projects and site.projects.size>0 -%}
 
     
-  {% for project in site.projects %}
+  {%- for project in site.projects -%}
   
   
-    {% assign rightpos = forloop.index | modulo: 2 %}
+    {%- assign rightpos = forloop.index | modulo: 2 -%}
     
-    {% if rightpos == 1 %}
+    {%- if rightpos == 1 -%}
     <br>left
-    {% else %}
+    {%- else -%}
     right
-    {% endif %}
+    {%- endif -%}
 
         <h3>{{ project.name | append: " - " | append: forloop.index }}</h3>
         <p>{{ project.description }}</p>
         <p>{{ project.type }}</p>
-        {% if project.code_link %}
+        {%- if project.code_link -%}
         <p>{{ project.code_link }}</p>
-        {% else %}
+        {%- else -%}
         <p>Code not available</p>
-        {% endif %}
+        {%- endif -%}
         
-        {% if p.web_url %}
+        {%- if p.web_url -%}
         <p>{{ p.web_url }}</p>
-        {% else %}
+        {%- else -%}
         <p>Hosting URL unavailable</p>
-        {% endif %}
+        {%- endif -%}
         <p>{{ project.image }}</p>
         <a href="{{project.url}}">link</a>
 
-    {% endfor %}
-  {% else %} 
+    {%- endfor -%}
+  {%- else -%} 
     <p>No projects to show</p>
-  {% endif %}
+  {%- endif -%}
   {%endcomment%}
 </section>
