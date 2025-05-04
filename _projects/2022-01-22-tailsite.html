@@ -5,8 +5,8 @@ subHeading: "TailSite is a static site made with Tailwind CSS"
 description: "TailSite is a static site made with Tailwind CSS"
 type: Static Site
 code_link: https://github.com/ajpalok/tailsite/
-web_url: https://tailsite.2haas.com/
-image: https://camo.githubusercontent.com/baec6c21e739215d77bfd0fcd9a1be2bd97cf70e94ac15ff8e8185ca70e441b4/68747470733a2f2f64756d6d79696d6167652e636f6d2f393230783430302f6666323133372f6666666666662e67696626746578743d2b2b2b2b2b2b2b5461696c736974652b2b2b2b2b2b2b
+web_url: https://ajpalok.github.io/tailsite//
+image: https://dummyimage.com/920x400/ff2137/ffffff.gif&text=+++++++Tailsite+++++++
 ---
 
 A theme for Jekyll created with Tailwind CSS.
@@ -14,7 +14,7 @@ A theme for Jekyll created with Tailwind CSS.
 ## Features
 
 - Live Search
-- SVG Icons
+- SVG icons
 - SEO Tags & Categories
 - About page
 - Contact page
@@ -22,8 +22,141 @@ A theme for Jekyll created with Tailwind CSS.
 - Feed RSS
 
 ## SEO
+
 - Google Analytics
 - Meta tags
 - JSON-LD
 - Sitemap.xml
 - Social Media ready
+
+### Site configuration
+
+Below are some properties you can change in your project `_config.yml` to configure your site, check the [settings documentation](https://github.com/ajpalok/tailsite/wiki/Settings) for more details.
+
+```yml
+# Welcome to Jekyll!
+# Site settings
+
+name: Tailsite
+title: Tailsite | Template by 2HAAS
+description: >-
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+tags:
+  -Jekyll
+  -Template
+  -Tailwindcss
+  -Tailsite
+
+# URL setup
+
+baseurl: "" # the subpath of your site or repository name if using github pages, e.g. /repo_name
+url: "https://tailsite.2haas.com" # main URL, e.g. 'https://yourname.github.io'
+
+# Social Media ID's for the site
+
+github_username: 2HAAS
+facebook_username: 2haas
+twitter_username: 2haas_tw
+instagram_username: 2haas_insta
+linkedin_username: 2haas
+youtube_username: 2HAAS
+
+# Contact form setup
+
+contact:
+  email: "example@2haas.com" # for contact mail to send mail (Or)
+  formspree_form_id:   # instead use formspree id from formspree.io, ex: xxxxxxxx
+  subject: "Want to contact with you.."
+  sent_message_url: '/contact/message-sent/'
+  address: 'physical address if you have any to mention, replace that in _config.yml file'
+
+
+# Site permissions
+
+show_hero: true # showing first post in big banner
+author_cover: true # showing author cover image in author page.
+#
+#
+#
+#
+#
+#
+# Comming soon with ads banner section
+# google adsense setup
+# ads_id: "ca-pub-xxxxxxxxxxxxxxx"
+
+# Sites Necessary Configuration
+
+language: "en"
+
+# posts permalink
+permalink: "/:title/"
+
+#comming soon pagination for particular part
+# pagination:
+#   enabled: true
+
+# Author & Category setup
+collections:
+  authors:
+    output: true
+    sidebar_label: Authors
+  categories:
+    output: true
+    sidebar_label: Categories
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  -
+    scope:
+      path: ""
+      type: "categories"
+    values:
+      layout: "category"
+      
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+markdown: kramdown
+markdown_ext: "markdown, mkdown, mkdn, mkd, md"
+highlighter: rouge
+sass:
+    style: compressed
+compress_html:
+  clippings: []
+  comments: []
+  endings: []
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: []
+```
+
+## Posts
+
+Use the [Front Matter properties](https://github.com/ajpalok/tailsite/wiki/Post#front-matter-properties) to create posts.
+
+## Questions?
+
+File a [GitHub issue](https://github.com/ajpalok/tailsite/issues/new) please.
+
+## Author
+
+[Abrar Jahin](https://ajpalok.github.io/)
+
+## License
+
+*Tailsite Template* is available under the [GPL-2.0 License](https://github.com/ajpalok/tailsite-host/blob/main/LICENSE). See the [LICENSE](https://github.com/ajpalok/tailsite/blob/master/LICENSE) file for more info.

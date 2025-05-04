@@ -12,7 +12,7 @@ skills:
   languages:
     # levels are 1 to 5 (1 is the lowest, 5 is the highest)
     - skill: HTML
-      level: 4
+      level: 2
       color: "#e34c26"
     - skill: CSS
       level: 3
@@ -26,9 +26,6 @@ skills:
     - skill: JavaScript
       level: 3
       color: "#f7df1e"
-    - skill: PHP
-      level: 1
-      color: "#777bb4"
     - skill: Ruby
       level: 3
       color: "#cc342d"
@@ -41,28 +38,37 @@ skills:
     - skill: C
       level: 4
       color: "#a8b9cc"
+    - skill: PHP
+      level: 4
+      color: "#777bb4"
   frameworks:
     - skill: Ruby on Rails
-      level: 3
+      level: 4
       color: "#cc0000"
     - skill: Jekyll
       level: 4
       color: "#cc0000"
+    - skill: Laravel
+      level: 3
+      color: "#ff2d55"
+    - skill: jQuery
+      level: 1
+      color: "#0769ad"
     - skill: WordPress
       level: 2
       color: "#21759b"
     - skill: Bootstrap
-      level: 4
+      level: 3
       color: "#7952b3"
-    - skill: Tailwind
-      level: 1
+    - skill: TailwindCSS
+      level: 2
       color: "#38b2ac"
   tools:
     - skill: Git
       level: 2
       color: "#f05032"
     - skill: GitHub
-      level: 3
+      level: 4
       color: "#181717"
     - skill: VS Code
       level: 3

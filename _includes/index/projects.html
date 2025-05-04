@@ -9,7 +9,7 @@
 
 
   {%- if site.projects and site.projects.size>0 -%}
-    {%- for p in site.projects | limit:5 -%}
+    {%- for p in site.projects reversed | limit:5 -%}
       {%- assign rtlCheck = forloop.index | modulo: 2 -%}
       {%- if rtlCheck == 1 -%}
 
@@ -40,13 +40,13 @@
               {%- if p.code_link -%}
               <a class="px-2" href="{{ p.code_link }}">Source Code</a>
               {%- else -%}
-              <p class="px-2">Code unavailable</p>
+              <p class="px-2">No Code</p>
               {%- endif -%}
 
               {%- if p.web_url -%}
               <a class="px-2" href="{{ p.web_url }}">Live Demo</a>
               {%- else -%}
-              <p class="px-2">LiveDemo unavailable</p>
+              <p class="px-2">No LiveDemo</p>
               {%- endif -%}
             </div>
           </div>
@@ -90,13 +90,13 @@
               {%- if p.web_url -%}
               <a class="px-2" href="{{ p.web_url }}">Live Demo</a>
               {%- else -%}
-              <p class="px-2">LiveDemo unavailable</p>
+              <p class="px-2">No LiveDemo</p>
               {%- endif -%}
               
               {%- if p.code_link -%}
               <a class="px-2" href="{{ p.code_link }}">Source Code</a>
               {%- else -%}
-              <p class="px-2">Code unavailable</p>
+              <p class="px-2">No Code</p>
               {%- endif -%}
             </div>
           </div>
@@ -191,7 +191,7 @@
         {%- if p.web_url -%}
         <p>{{ p.web_url }}</p>
         {%- else -%}
-        <p>Hosting URL unavailable</p>
+        <p>Hosting No URL</p>
         {%- endif -%}
         <p>{{ project.image }}</p>
         <a href="{{project.url}}">link</a>
