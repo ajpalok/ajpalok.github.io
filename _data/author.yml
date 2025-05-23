@@ -48,9 +48,12 @@ skills:
     - skill: Jekyll
       level: 4
       color: "#cc0000"
+    - skill: CodeIgniter
+      level: 1
+      color: "#E05A2B"
     - skill: Laravel
       level: 3
-      color: "#ff2d55"
+      color: "#F61500"
     - skill: jQuery
       level: 1
       color: "#0769ad"

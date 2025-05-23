@@ -9,10 +9,10 @@
 
 
   {%- if site.projects and site.projects.size>0 -%}
-    {%- for p in site.projects reversed | limit:5 -%}
+  {%- assign projects = site.projects | reverse | limit: 5 -%}
+    {%- for p in projects -%}
       {%- assign rtlCheck = forloop.index | modulo: 2 -%}
       {%- if rtlCheck == 1 -%}
-
 
       <div class="project-card-holder d-flex justify-content-start">
         

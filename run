@@ -1,1 +1,1 @@
-jekyll s -lt -P 80
+bundle exec jekyll s -lt -P 80
