@@ -1,3 +1,9 @@
 title: "Abrar's Portfolio"
 projects:
   description: You can find all of my projects <a href="/projects/"> here</a>, Here are some of them.
+languages_on_index:
+  - name: Ruby on Rails
+  - name: Laravel
+  - name: PHP
+  - name: Jekyll
+  - name: ReactJS

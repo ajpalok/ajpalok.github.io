@@ -1,0 +1,31 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": {{ site.data.author.name | jsonify }},
+      "givenName": {{ site.data.author.first_name | jsonify }},
+      "familyName": {{ site.data.author.last_name | jsonify }},
+      "url": {{ site.url | append: site.baseurl | jsonify }},
+      "image": {{ site.data.config.logo | jsonify }},
+      "sameAs": {{ site.data.author.social | map: 'url' | jsonify }},
+      "description": {{ site.data.author.description | strip_html | strip_newlines | jsonify }},
+      "jobTitle": {{ site.data.author.organizations[0].position | jsonify }},
+      "worksFor": {
+        "@type": "Organizations",
+        "name": {{ site.data.author.organizations[0].name | jsonify }},
+        "url": {{ site.data.author.organizations[0].url | jsonify }}
+      }
+    },
+    {% for org in site.data.author.organizations %}
+    {
+        "@type": {{ org.type | jsonify }},
+        "name": {{ org.name | jsonify }},
+        "url": {{ org.url | jsonify }},
+        "description": {{ org.description | jsonify }}
+    }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>

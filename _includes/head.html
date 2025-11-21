@@ -8,7 +8,7 @@
     {%- assign image = page.image -%}
 {%- endif -%}
 
-{%- assign description = site.description -%}
+{%- assign description = site.data.config.description -%}
 {%- if page.description -%}
     {%- assign description = page.description | strip_html | strip_newlines | truncate: 160 -%}
 {%- endif -%}
@@ -35,6 +35,7 @@
 <meta property="og:title" content="{{ title }}">
 <meta property="og:url" content="{{ site.baseurl | prepend: site.url }}{{ page.url }}">
 <meta property="og:site_name" content="{{ site.data.config.main_title }}">
+<meta property="og:description" content="{{ description }}">
 <meta property="article:publisher" content="https://www.facebook.com/ajpalok.fb" />
 {% if site.data.config.facebook_username %}
 <meta property="article:author" content="https://www.facebook.com/{{ site.data.config.facebook_username }}" />
@@ -77,3 +78,5 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&family=Noto+Sans:wght@500&family=Ovo&family=Tiro+Bangla&display=swap" rel="stylesheet">
+{%- comment -%} Include site-wide JSON-LD portfolio schema (keeps data in sync via _data files) {%- endcomment -%}
+{% include schema/portfolio.jsonld %}

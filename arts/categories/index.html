@@ -1,0 +1,26 @@
+---
+layout: default
+title: Art Categories
+permalink: /arts/categories/
+---
+
+<div class="container py-5">
+  <h1 class="display-3 text-center mb-5">Art Categories</h1>
+  
+  {% assign art_categories = site.arts | map: 'category' | compact | uniq | sort %}
+  
+  <div class="row g-4">
+    {% for category in art_categories %}
+      {% assign category_arts = site.arts | where: 'category', category %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ category | capitalize }}</h5>
+            <p class="card-text text-muted">{{ category_arts.size }} {% if category_arts.size == 1 %}art{% else %}arts{% endif %}</p>
+            <a href="/arts/categories/{{ category | slugify }}/" class="btn btn-primary">View Arts</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

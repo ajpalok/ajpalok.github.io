@@ -1,0 +1,32 @@
+---
+layout: default
+title: Art Tags
+permalink: /arts/tags/
+---
+
+<div class="container py-5">
+  <h1 class="display-3 text-center mb-5">Art Tags</h1>
+  
+  {% assign all_tags = "" | split: "" %}
+  {% for art in site.arts %}
+    {% if art.tags %}
+      {% for tag in art.tags %}
+        {% unless all_tags contains tag %}
+          {% assign all_tags = all_tags | push: tag %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  {% assign all_tags = all_tags | sort %}
+  
+  <div class="row g-3">
+    {% for tag in all_tags %}
+      {% assign tag_arts = site.arts | where_exp: "art", "art.tags contains tag" %}
+      <div class="col-auto">
+        <a href="/arts/tags/{{ tag | slugify }}/" class="btn btn-outline-primary">
+          {{ tag }} <span class="badge bg-primary">{{ tag_arts.size }}</span>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>

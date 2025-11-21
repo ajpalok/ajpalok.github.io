@@ -7,10 +7,9 @@
   </div>
 
 
-
-  {%- if site.projects and site.projects.size>0 -%}
-  {%- assign projects = site.projects | reverse | limit: 5 -%}
-    {%- for p in projects -%}
+  {%- if site.projects and site.projects.size > 0 -%}
+  {%- assign projects = site.projects | reverse -%}
+    {%- for p in projects | limit: 5 -%}
       {%- assign rtlCheck = forloop.index | modulo: 2 -%}
       {%- if rtlCheck == 1 -%}
 

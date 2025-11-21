@@ -28,10 +28,14 @@ compress_html:
 collections:
   posts:
     output: true
-    permalink: /blog/:slug/
+    permalink: /blogs/:slug/
   projects:
     output: true
     permalink: /projects/:slug/
+    sort_by: "date"
+  arts:
+    output: true
+    permalink: /arts/:slug/
     sort_by: "date"
 
 defaults:
@@ -45,6 +49,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "arts"
+    values:
+      layout: "art"
 
 
 # Exclude from processing.

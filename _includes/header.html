@@ -1,6 +1,6 @@
 <nav style="z-index: 10;" id="navbarContainer" class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary" aria-label="{{site.data.author.first_name}}">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ site.url | append: site.baseurl }}">
+    <a class="navbar-brand" href="/">
       <img class="logo d-inline-block align-text-top"
               width="30"
               height="30"
@@ -27,6 +27,15 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link {% if page.url == '/' %}active{% endif %}" aria-current="page" href="/">Homepage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/projects/' %}active{% endif %}" aria-current="page" href="/projects/">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/blogs/' %}active{% endif %}" aria-current="page" href="/blogs/">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/arts/' %}active{% endif %}" aria-current="page" href="/arts/">Arts</a>
           </li>
           {% if site.data.author.social %}
           <li class="nav-item dropdown">

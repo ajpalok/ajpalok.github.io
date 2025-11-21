@@ -1,0 +1,105 @@
+---
+layout: page
+title: Arts
+permalink: /arts/
+---
+
+{% if site.arts and site.arts.size>0 %}
+<div class="row py-md-4 mx-0">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <h3 class="display-3 text-center">Arts</h3>
+    </div>
+    <div class="album py-5">
+      {% comment %} Debug: show current_page and paginated_arts size {% endcomment %}
+      {% if page.current_page %}<!-- current_page: {{ page.current_page }} -->{% else %}<!-- current_page: 1 -->{% endif %}
+      {% if page.paginated_arts %}<!-- paginated_arts_size: {{ page.paginated_arts | size }} -->{% else %}<!-- paginated_arts_size: (not set) -->{% endif %}
+      {% assign arts_sorted = site.arts | sort: 'date' | reverse %}
+      {% assign items_per_page = 12 %}
+      {% if page.current_page %}
+        {% assign current_page = page.current_page %}
+      {% else %}
+        {% assign current_page = 1 %}
+      {% endif %}
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% if page.paginated_arts %}
+              {% assign paginated_arts = page.paginated_arts %}
+            {% else %}
+              {% assign offset = current_page | minus: 1 | times: items_per_page %}
+              {% assign paginated_arts = arts_sorted | offset: offset | limit: items_per_page %}
+            {% endif %}
+            {% for art in paginated_arts %}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/div">
+                    {% if art.image %}
+                        <img width="100%" height="255px" style="object-fit: cover;" src="{{ art.image }}" alt="{{ art.title | prepend: 'Image: ' }}">
+                    {% else %}
+                        <div style="height:225px;" class="w-100 bg-body-tertiary"></div>
+                    {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ art.title | strip_html | truncate: 70 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-body-secondary"></small>
+                        <div class="btn-group">
+                            <a href="{{art.url}}" type="button" class="btn btn-sm btn-outline-primary">
+                            Read 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <use xlink:href="#box-arrow-right"/>
+                            </svg>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% assign remainder = arts_sorted.size | modulo: items_per_page %}
+            {% assign total_pages = arts_sorted.size | divided_by: items_per_page %}
+            {% if remainder > 0 %}{% assign total_pages = total_pages | plus: 1 %}{% endif %}
+            {% if total_pages > 1 %}
+            <nav aria-label="Arts pagination" class="mt-5">
+              <ul class="pagination justify-content-center">
+                {% if current_page > 1 %}
+                  <li class="page-item">
+                    {% if current_page == 2 %}
+                      <a class="page-link" href="/arts/">Previous</a>
+                    {% else %}
+                      <a class="page-link" href="/arts/page{{ current_page | minus: 1 }}/">Previous</a>
+                    {% endif %}
+                  </li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                {% endif %}
+                
+                {% for page_num in (1..total_pages) %}
+                  {% if page_num == current_page %}
+                    <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+                  {% elsif page_num == 1 %}
+                    <li class="page-item"><a class="page-link" href="/arts/">{{ page_num }}</a></li>
+                  {% else %}
+                    <li class="page-item"><a class="page-link" href="/arts/page{{ page_num }}/">{{ page_num }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                
+                {% if current_page < total_pages %}
+                  <li class="page-item">
+                    <a class="page-link" href="/arts/page{{ current_page | plus: 1 }}/">Next</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link">Next</span></li>
+                {% endif %}
+              </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% else %}
+    <p class="h2 text-center">No arts were published yet...</p>
+{% endif %}

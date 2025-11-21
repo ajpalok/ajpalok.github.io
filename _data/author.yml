@@ -3,10 +3,12 @@ first_name: "Abrar"
 last_name: "Jahin"
 description: "I'm Abrar, a full-stack web developer from Bangladesh. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences. I love to learn new technologies and use them to solve real-life problems. I also love to work with teams and share my knowledge with others. I'm currently working as a full-stack web developer at a software company in Dhaka, Bangladesh. I'm also a freelancer and I love to work with new people. If you're interested in working with me, feel free to contact me."
 resume: "https://docs.google.com/document/d/1__6xncJIf7r54OtQyr2iMIp_feQ2gEZyfQzXjXKNCMY/edit?usp=sharing"
-heroCodes: 
-  - "Ruby on Rails"
-  - "Jekyll"
-  - "WordPress"
+organizations:
+  - name: "2HAAS"
+    position: "Full Stack Developer"
+    description: "2HAAS is a platform that provides a wide range of services to help you grow your business. We offer services like web development, mobile app development, digital marketing, and many more. Our team of experts is always ready to help you with your business needs."
+    url: "https://2haas.com/"
+    type: "Organization"
 skills:
   description: I can do stuffs with Fullstack Development, Static Site Generations (SSG) and also with some other stuffs.
   languages:
