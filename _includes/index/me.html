@@ -13,9 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hero) {
         var randomNum = Math.floor(Math.random() * 5) + 1;
         var patternUrl = '/assets/images/patterns/pattern_' + randomNum + '.svg';
-        var currentBg = hero.style.backgroundImage;
-        var newBg = currentBg.replace('/assets/images/patterns/pattern_1.svg', patternUrl);
-        hero.style.backgroundImage = newBg;
+        
+        // Preload the image
+        var img = new Image();
+        img.onload = function() {
+            // Once loaded, replace the background image
+            var currentBg = hero.style.backgroundImage;
+            var newBg = currentBg.replace('/assets/images/patterns/pattern_1.svg', patternUrl);
+            hero.style.backgroundImage = newBg;
+        };
+        img.src = patternUrl;
     }
 });
 </script>
