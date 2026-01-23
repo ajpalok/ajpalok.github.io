@@ -5,9 +5,14 @@ description: >- # here a description for my portfolio where user will be able to
   I love to learn new things and I am always curious about how things work. I am a fast learner and I love to work with new technologies.
 
 # Site settings
+show_header_logo: true
 logo: "https://0.gravatar.com/avatar/1b65d7b912dbb973c6a2a1a2f0a645ae?size="
 logo_alt_text: "Abrar's Image"
 language: en
+
+show_me_in_hero: true
+me_in_hero_image: "/assets/images/me/abrar_1.png"
+me_in_hero_alt_text: "Abrar Jahin Hero Image"
 
 nav:
   - name: Projects

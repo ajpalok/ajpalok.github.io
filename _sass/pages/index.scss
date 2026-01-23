@@ -4,6 +4,53 @@
     justify-content: center;
     align-items: center;
     min-height: 100svh;
+    background-color: #ffffff;
+    background-image: 
+        url('/assets/images/pattern_1.svg'),
+        radial-gradient(at 20% 20%, hsla(190, 80%, 94%, 1) 0, transparent 50%), 
+        radial-gradient(at 80% 20%, hsla(280, 60%, 94%, 1) 0, transparent 50%), 
+        radial-gradient(at 20% 80%, hsla(30, 70%, 94%, 1) 0, transparent 50%), 
+        radial-gradient(at 80% 80%, hsla(340, 60%, 94%, 1) 0, transparent 50%);
+    background-size: 40px 40px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+
+.hero-me-image {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hero-me-image.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-me-image:hover {
+    transform: translateY(-10px);
+}
+
+.hero-me-image.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hero-me-image {
+        width: 150px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-me-image {
+        width: 200px;
+    }
 }
 
 .icon-index-hero{

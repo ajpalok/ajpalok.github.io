@@ -1,0 +1,46 @@
+
+.hero-image-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 2rem auto;
+    border-bottom: 8px solid var(--aj-primary);
+    border-radius: 50% 50% 0 0;
+    overflow: hidden;
+    
+    @media (min-width: 768px) {
+        width: 350px;
+        height: 350px;
+    }
+
+    .hero-image {
+        width: auto;
+        height: 90%; 
+        min-width: 100%;
+        object-fit: contain; 
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+    }
+
+    // State: Loaded (Popped up)
+    &.loaded .hero-image {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    // State: Scrolled Down (Hidden)
+    &.scrolled-down .hero-image {
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+    }
+
+    // Hover Effect (Pop up slightly more)
+    &:hover .hero-image {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}

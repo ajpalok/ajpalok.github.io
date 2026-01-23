@@ -1,7 +1,11 @@
-<section id="hero" class="py-5 text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-8 col-md-8 mx-auto">
-        <h1 class="display-1">{{ site.data.author.first_name }}: Code Wizard</h1>
+<section id="hero" class="py-5 text-center">
+    <div class="container">
+        <div class="row py-lg-5">
+            <div class="col-lg-8 col-md-8 mx-auto">
+                {%- if site.data.config.show_me_in_hero %}
+                <img src="{{ site.data.config.me_in_hero_image }}" alt="{{ site.data.author.name }}" class="hero-me-image" id="heroMeImage">
+                {%- endif %}
+                <h1 id="wizard" class="display-1">{{ site.data.author.first_name }}: Code Wizard</h1>
                 <p class=" text-body-secondary py-3 h4">
                         Doing Full Stack Development<br> mostly with <span id="index_hero_code_names" class="mark" aria-live="polite">{{ site.data.index.languages_on_index[0].name }}</span>...
                 </p>
@@ -91,37 +95,65 @@
                 })();
                 </script>
 
-        <!-- text to know more in promary color text -->
-        <p class="text-body-primary h6 pb-5">
-            I try to maintain punctuality even if it means staying up all night and drinking a lot of coffee.
-        </p>
+                <!-- text to know more in promary color text -->
+                <p class="text-body-primary h6 pb-5">
+                    I try to maintain punctuality even if it means staying up all night and drinking a lot of coffee.
+                </p>
 
-        {% if site.data.author.social %}
-        <p><u>Personally Inbox me in:</u></p>
-        <ul class="list-inline">
-            {% for social in site.data.author.social %}
-            <li class="list-inline-item">
-                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon icon-index-hero px-1"
-                        aria-hidden="true"
-                        role="img" width="40" height="40" fill="transparent">
-                        <use xlink:href="#{{ social.icon | default: 'people'}}"></use>
-                    </svg>
-                    <span class="sr-reader">{{ social.title }}</span>
+                {% if site.data.author.social %}
+                <p><u>Personally Inbox me in:</u></p>
+                <ul class="list-inline">
+                    {% for social in site.data.author.social %}
+                    <li class="list-inline-item">
+                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer">
+                            <svg class="icon icon-index-hero px-1"
+                                aria-hidden="true"
+                                role="img" width="40" height="40" fill="transparent">
+                                <use xlink:href="#{{ social.icon | default: 'people'}}"></use>
+                            </svg>
+                            <span class="sr-reader">{{ social.title }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <a
+                    name="Resume link"
+                    id=""
+                    class="btn btn-lg btn-primary text-white mt-3"
+                    href="{{ site.data.author.resume }}"
+                    role="button">
+                    Resume
                 </a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        <a
-            name="Resume link"
-            id=""
-            class="btn btn btn-primary text-white mt-3"
-            href="{{ site.data.author.resume }}"
-            role="button">
-            Resume
-        </a>
         
+            </div>
         </div>
     </div>
+    {%- if site.data.config.show_me_in_hero %}
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            var img = document.getElementById('heroMeImage');
+            if (img) {
+                function showImage() {
+                    img.classList.add('loaded');
+                    var lastScrollTop = 0;
+                    window.addEventListener('scroll', function() {
+                        var st = window.pageYOffset || document.documentElement.scrollTop;
+                        if (st > lastScrollTop && st > 100) {
+                            img.classList.add('hidden');
+                        } else if (st < lastScrollTop) {
+                            img.classList.remove('hidden');
+                        }
+                        lastScrollTop = st <= 0 ? 0 : st;
+                    });
+                }
+                if (img.complete) {
+                    showImage();
+                } else {
+                    img.onload = showImage;
+                }
+            }
+        });
+    </script>
+    {%- endif %}
 </section>
