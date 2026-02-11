@@ -1,31 +1,66 @@
 ---
 layout: default
 ---
-<div class="w-100">
-    <div class="card mx-auto" style="max-width: 75ch; margin-top: 5rem; border: none;">
-        {% if page.image %}
-        <img src="{{page.image}}" class="card-img-top" width="100%" height="255px" style="object-fit: contain;" alt="{{page.title}}">
-        {% else %}
-        <div style="height:225px;" class="w-100 bg-body-tertiary"></div>
-        {% endif %}
-        <div class="card-body">
-            {% if page.code_link %}
-            <a href="{{page.code_link}}" class="btn btn-primary my-3">Get the Codes</a>
-            {% endif %}
-            {% if page.web_url %}
-            <a href="{{page.web_url}}" class="btn btn-primary my-3">Live Demo</a>
-            {% endif %}
+<div class="detail-page-wrapper">
+    <div class="container py-5">
+        <!-- Header Section -->
+        <div class="row justify-content-center mb-5 mt-4">
+            <div class="col-lg-10 text-center">
+                {% if page.type %}
+                <span class="badge rounded-pill bg-primary-soft px-3 py-2 mb-3 fw-bold">{{ page.type }}</span>
+                {% endif %}
+                
+                <h1 class="display-4 fw-bold mb-3 text-dark">{{ page.name }}</h1>
+                
+                {% if page.subHeading %}
+                <p class="lead text-muted mx-auto mb-4" style="max-width: 700px;">{{ page.subHeading }}</p>
+                {% endif %}
 
-            <h5 class="card-title h1">{{page.name}}</h5>
-            <p class="card-text">
-                {{content | markdownify}}
-            </p>
-            {% if page.code_link %}
-            <a href="{{page.code_link}}" class="btn btn-primary">Get the Codes</a>
-            {% endif %}
-            {% if page.web_url %}
-            <a href="{{page.web_url}}" class="btn btn-primary">Live Demo</a>
-            {% endif %}
+                <div class="d-flex justify-content-center gap-3">
+                    {% if page.web_url %}
+                    <a href="{{ page.web_url }}" target="_blank" class="btn btn-primary text-white px-4 py-2 rounded-pill fw-semibold shadow-sm">
+                        <i class="fas fa-external-link-alt me-2"></i> Live Demo
+                    </a>
+                    {% endif %}
+                    {% if page.code_link %}
+                    <a href="{{ page.code_link }}" target="_blank" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold">
+                        <i class="fab fa-github me-2"></i> Get the Codes
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if page.image %}
+        <!-- Hero Image -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="detail-hero-image">
+                    <div class="img-container">
+                        <img src="{{ page.image }}" alt="{{ page.name }}" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Content Section -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="detail-content card border-0 shadow-sm p-4 p-md-5 rounded-4">
+                    {{ content | markdownify }}
+                    
+                    <!-- Bottom Actions (Mobile friendly backup) -->
+                    <div class="d-flex d-md-none flex-column gap-2 mt-4 pt-4 border-top">
+                         {% if page.web_url %}
+                        <a href="{{ page.web_url }}" class="btn btn-primary text-white w-100">Live Demo</a>
+                        {% endif %}
+                        {% if page.code_link %}
+                        <a href="{{ page.code_link }}" class="btn btn-outline-secondary w-100">Get the Codes</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,78 +1,180 @@
-<section class="skills py-5 w-100">
-    <div class="row py-md-4 mx-0">
-        <div class="col-lg-6 col-md-8 mx-auto">
-        <h2 class="display-3 text-center">Skills</h2>
-        <p class="text-body-secondary text-center py-4">{{ site.data.author.skills.description }}</p>
+<section class="skills-section star-pattern py-5 w-100" id="skills">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row py-md-4">
+            <div class="col-lg-8 col-md-10 mx-auto text-center">
+                <h2 class="display-3 text-primary fw-bold mb-3">Technical Skills</h2>
+                <p class="lead text-muted">{{ site.data.author.skills.description }}</p>
+                <div class="mx-auto mt-3 rounded-pill" style="width: 60px; height: 4px; background: linear-gradient(90deg, #f06543, #f09d51);"></div>
+            </div>
         </div>
-    </div>
 
+        <!-- Filter Tabs -->
+        <div class="row mb-5">
+            <div class="col-12 text-center skills-filter">
+                <ul class="nav nav-pills d-inline-flex" id="skillsTabs" role="tablist">
+                    <li class="nav-item">
+                        <span class="nav-link active" data-filter="all">All</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" data-filter="languages">Languages</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" data-filter="frameworks">Frameworks</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" data-filter="tools">Tools</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="skill-container mx-auto mb-4">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <span class="nav-link active">All</span>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link">Languages</span>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link">Frameworks</span>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link">Tools</span>
-            </li>
-          </ul>
-    {% for s in site.data.author.skills.languages %}
-        <span style="color:{{s.color}};" data-skill-level="{{ s.level }}" data-skill-type="languages" class="skill-level">{{ s.skill }}</span>
-    {% endfor %}
-    {% for s in site.data.author.skills.frameworks %}
-        <span style="color:{{s.color}};" data-skill-level="{{ s.level }}" data-skill-type="frameworks" class="skill-level">{{ s.skill }}</span>
-    {% endfor %}
-    {% for s in site.data.author.skills.tools %}
-        <span style="color:{{s.color}};" data-skill-level="{{ s.level }}" data-skill-type="tools" class="skill-level">{{ s.skill }}</span>
-    {% endfor %}
+        <!-- Skills Grid -->
+        <div class="row g-4 skills-grid">
+            <!-- Languages -->
+            {% for s in site.data.author.skills.languages %}
+            <div class="col-lg-3 col-md-4 col-sm-6 skill-item" data-type="languages">
+                <div class="skill-card h-100">
+                    <div class="skill-header">
+                        <h4>{{ s.skill }}</h4>
+                        <div class="skill-icon" style="background-color: {{ s.color }}; box-shadow: 0 4px 10px {{ s.color }}40;">
+                            {{ s.skill | slice: 0 }}
+                        </div>
+                    </div>
+                    
+                    <div class="skill-body">
+                        <div class="progress-wrapper">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: 0%; background-color: {{ s.color }};"
+                                 data-width="{{ s.level | times: 20 }}%"
+                                 aria-valuenow="{{ s.level | times: 20 }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"></div>
+                        </div>
+                        <div class="skill-meta">
+                            <span>Level</span>
+                            <span>{{ s.level | times: 20 }}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Frameworks -->
+            {% for s in site.data.author.skills.frameworks %}
+            <div class="col-lg-3 col-md-4 col-sm-6 skill-item" data-type="frameworks">
+                <div class="skill-card h-100">
+                    <div class="skill-header">
+                        <h4>{{ s.skill }}</h4>
+                        <!-- Fallback color if not present -->
+                        {% assign color = s.color | default: "#667eea" %}
+                        <div class="skill-icon" style="background-color: {{ color }}; box-shadow: 0 4px 10px {{ color }}40;">
+                            {{ s.skill | slice: 0 }}
+                        </div>
+                    </div>
+                    
+                    <div class="skill-body">
+                        <div class="progress-wrapper">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: 0%; background-color: {{ s.color | default: '#667eea' }};"
+                                 data-width="{{ s.level | times: 20 }}%"
+                                 aria-valuenow="{{ s.level | times: 20 }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"></div>
+                        </div>
+                        <div class="skill-meta">
+                            <span>Level</span>
+                            <span>{{ s.level | times: 20 }}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Tools -->
+            {% for s in site.data.author.skills.tools %}
+            <div class="col-lg-3 col-md-4 col-sm-6 skill-item" data-type="tools">
+                <div class="skill-card h-100">
+                    <div class="skill-header">
+                        <h4>{{ s.skill }}</h4>
+                        {% assign color = s.color | default: "#764ba2" %}
+                        <div class="skill-icon" style="background-color: {{ color }}; box-shadow: 0 4px 10px {{ color }}40;">
+                            {{ s.skill | slice: 0 }}
+                        </div>
+                    </div>
+                    
+                    <div class="skill-body">
+                        <div class="progress-wrapper">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: 0%; background-color: {{ s.color | default: '#764ba2' }};"
+                                 data-width="{{ s.level | times: 20 }}%"
+                                 aria-valuenow="{{ s.level | times: 20 }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"></div>
+                        </div>
+                        <div class="skill-meta">
+                            <span>Level</span>
+                            <span>{{ s.level | times: 20 }}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
 <script>
-    document.querySelectorAll('.skill-level').forEach(function(skill) {
-        var level = skill.getAttribute('data-skill-level');
-        skill.style.display = 'inline-block';
-        if(window.innerWidth>768) skill.style.fontSize = level*1.25 + 'rem';
-        else if(window.innerWidth>300) skill.style.fontSize = level*.75 + 'rem';
-        else skill.style.fontSize = level*.45 + 'rem';
-        window.addEventListener('resize', function() {
-            if(window.innerWidth>768) skill.style.fontSize = level*1.25 + 'rem';
-            else if(window.innerWidth>300) skill.style.fontSize = level*.75 + 'rem';
-            else skill.style.fontSize = level*.45 + 'rem';
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter Logic
+        const filterButtons = document.querySelectorAll('.skills-filter .nav-link');
+        const skillItems = document.querySelectorAll('.skill-item');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all
+                filterButtons.forEach(b => b.classList.remove('active'));
+                // Add active to clicked
+                this.classList.add('active');
+
+                const filterValue = this.getAttribute('data-filter');
+
+                skillItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-type') === filterValue) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Intersection Observer for Progress Bars
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.progress-bar');
+                    if (progressBar) {
+                        progressBar.style.width = progressBar.getAttribute('data-width');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        skillItems.forEach(item => {
+            observer.observe(item);
         });
     });
-
-    document.querySelectorAll('.nav-link').forEach(
-        function(link) {
-            link.addEventListener('click', function() {
-                link.classList.add('active');
-                document.querySelectorAll('.nav-link').forEach(
-                    function(l) {
-                        if (l != link) {
-                            l.classList.remove('active');
-                        }
-                    }
-                );
-                var type = this.innerHTML.toLowerCase();
-                document.querySelectorAll('.skill-level').forEach(
-                    function(skill) {
-                        if (type == 'all') {
-                            skill.style.display = 'inline-block';
-                            
-                        } else if (skill.getAttribute('data-skill-type') == type) {
-                            skill.style.display = 'inline-block';
-                        } else {
-                            skill.style.display = 'none';
-                        }
-                    }
-                );
-            });
-        }
-    );
 </script>
