@@ -9,6 +9,16 @@ markdown: kramdown
 markdown_ext: "markdown, mkdown, mkdn, mkd, md"
 highlighter: rouge
 
+# Pagination settings
+pagination:
+  enabled: true
+  per_page: 12
+  permalink: '/page-:num/'
+  title: ':title - Page :num'
+  limit: 0
+  sort_reverse: true
+  sort_field: 'date'
+
 # Theme settings
 theme:
 permalink: /:title/

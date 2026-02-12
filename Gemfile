@@ -2,9 +2,9 @@ source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3.2"
 
-# group :jekyll_plugins do
-#   gem "jekyll-feed", "~> 0.12"
-# end
+group :jekyll_plugins do
+  gem "jekyll-paginate-v2", "~> 3.0"
+end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"

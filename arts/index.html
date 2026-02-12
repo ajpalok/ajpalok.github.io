@@ -2,6 +2,14 @@
 layout: page
 title: Arts
 permalink: /arts/
+pagination:
+  enabled: true
+  collection: arts
+  per_page: 12
+  sort_field: 'date'
+  sort_reverse: true
+  permalink: '/page-:num/'
+  title: ':title'
 ---
 
 <div class="listing-page-wrapper">
@@ -16,25 +24,11 @@ permalink: /arts/
             </div>
         </div>
 
-        {% if site.arts and site.arts.size > 0 %}
+        {% if paginator.posts and paginator.posts.size > 0 %}
             {% comment %} Pagination Logic {% endcomment %}
-            {% assign arts_sorted = site.arts | sort: 'date' | reverse %}
-            {% assign items_per_page = 12 %}
-            {% if page.current_page %}
-                {% assign current_page = page.current_page %}
-            {% else %}
-                {% assign current_page = 1 %}
-            {% endif %}
-
-            {% if page.paginated_arts %}
-                {% assign paginated_arts = page.paginated_arts %}
-            {% else %}
-                {% assign offset = current_page | minus: 1 | times: items_per_page %}
-                {% assign paginated_arts = arts_sorted | offset: offset | limit: items_per_page %}
-            {% endif %}
 
             <div class="row g-4">
-                {% for art in paginated_arts %}
+                {% for art in paginator.posts %}
                 <div class="col-md-6 col-lg-4">
                     <div class="listing-card">
                         <div class="card-img-wrapper">
@@ -74,38 +68,30 @@ permalink: /arts/
             </div>
 
             <!-- Pagination Controls -->
-            {% assign remainder = arts_sorted.size | modulo: items_per_page %}
-            {% assign total_pages = arts_sorted.size | divided_by: items_per_page %}
-            {% if remainder > 0 %}{% assign total_pages = total_pages | plus: 1 %}{% endif %}
-            
-            {% if total_pages > 1 %}
+            {% if paginator.total_pages > 1 %}
             <nav aria-label="Arts pagination" class="d-flex justify-content-center">
               <ul class="pagination">
-                {% if current_page > 1 %}
+                {% if paginator.previous_page %}
                   <li class="page-item">
-                    {% if current_page == 2 %}
-                          <a class="page-link" href="/arts/"><i class="fi fi-rr-angle-left"></i> Previous</a>
-                        {% else %}
-                          <a class="page-link" href="/arts/page{{ current_page | minus: 1 }}/"><i class="fi fi-rr-angle-left"></i> Previous</a>
-                        {% endif %}
-                      </li>
-                    {% else %}
-                      <li class="page-item disabled"><span class="page-link"><i class="fi fi-rr-angle-left"></i> Previous</span></li>
+                    <a class="page-link" href="{{ paginator.previous_page_path }}"><i class="fi fi-rr-angle-left"></i> Previous</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link"><i class="fi fi-rr-angle-left"></i> Previous</span></li>
                 {% endif %}
-                
-                {% for page_num in (1..total_pages) %}
-                  {% if page_num == current_page %}
+
+                {% for page_num in (1..paginator.total_pages) %}
+                  {% if page_num == paginator.page %}
                     <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
                   {% elsif page_num == 1 %}
                     <li class="page-item"><a class="page-link" href="/arts/">{{ page_num }}</a></li>
                   {% else %}
-                    <li class="page-item"><a class="page-link" href="/arts/page{{ page_num }}/">{{ page_num }}</a></li>
+                    <li class="page-item"><a class="page-link" href="/arts/page-{{ page_num }}/">{{ page_num }}</a></li>
                   {% endif %}
                 {% endfor %}
-                
-                {% if current_page < total_pages %}
+
+                {% if paginator.next_page %}
                   <li class="page-item">
-                    <a class="page-link" href="/arts/page{{ current_page | plus: 1 }}/">Next <i class="fi fi-rr-angle-right"></i></a>
+                    <a class="page-link" href="{{ paginator.next_page_path }}">Next <i class="fi fi-rr-angle-right"></i></a>
                   </li>
                 {% else %}
                   <li class="page-item disabled"><span class="page-link">Next <i class="fi fi-rr-angle-right"></i></span></li>
