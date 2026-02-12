@@ -3,47 +3,60 @@ layout: page
 title: Blogs
 permalink: /blogs/
 ---
-
-{% if site.posts and site.posts.size>0 %}
-<div class="row py-md-4 mx-0">
-    <div class="col-lg-6 col-md-8 mx-auto">
-        <h3 class="display-3 text-center">Blogs</h3>
-    </div>
-    <div class="album py-5">
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for blog in site.posts %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    <div class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/div">
-                    {% if blog.image %}
-                        <img width="100%" height="255px" style="object-fit: cover;" src="{{ blog.image }}" alt="{{ blog.title | append: ' Image' }}">
-                    {% else %}
-                        <div style="height:225px;" class="w-100 bg-body-tertiary"></div>
-                    {% endif %}
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{ blog.title | strip_html | truncate: 70 }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-body-secondary"></small>
-                        <div class="btn-group">
-                            <a href="{{blog.url}}" type="button" class="btn btn-sm btn-outline-primary">
-                            Read 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <use xlink:href="#box-arrow-right"/>
-                            </svg>
-                            </a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+<div class="listing-page-wrapper">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="listing-hero">
+                    <h1 class="display-4">{{ page.title }}</h1>
+                    <p class="lead">Thoughts, stories, and ideas.</p>
                 </div>
-            {% endfor %}
             </div>
         </div>
+
+        {% if site.posts and site.posts.size > 0 %}
+        <div class="row g-4">
+            {% for blog in site.posts %}
+            <div class="col-md-6 col-lg-4">
+                <div class="listing-card">
+                    <div class="card-img-wrapper">
+                        {% if blog.image %}
+                        <img src="{{ blog.image }}" alt="{{ blog.title }}">
+                        {% else %}
+                        <div style="height: 100%; width: 100%; background: #edf2f7; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-file-alt fa-2x text-muted"></i>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-img-overlay-hover">
+                            <a href="{{ blog.url }}" class="btn-view" title="Read Article">
+                                <i class="fas fa-book-open"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <span class="card-meta">{{ blog.date | date: "%B %d, %Y" }}</span>
+                        
+                        <a href="{{ blog.url }}" class="text-decoration-none">
+                            <h5 class="card-title">{{ blog.title }}</h5>
+                        </a>
+                        
+                        <p class="card-text">{{ blog.content | strip_html | truncatewords: 20 }}</p>
+
+                    </div>
+                    <div class="card-actions">
+                        <a href="{{ blog.url }}" class="btn btn-primary w-100">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <p class="h4 text-muted">No posts published yet.</p>
+        </div>
+        {% endif %}
     </div>
 </div>
-
-{% else %}
-    <p class="h2 text-center">No posts were published yet...</p>
-{% endif %}

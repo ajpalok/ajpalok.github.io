@@ -1,5 +1,3 @@
-require 'set'
-
 module Jekyll
   class ArtsPaginationGenerator < Generator
     safe true
@@ -14,23 +12,6 @@ module Jekyll
       # Paginate main arts listing (use arts/index.html as source so content is rendered)
       main_source = File.join(site.source, 'arts', 'index.html')
       paginate(site, arts_docs, '/arts/', items_per_page, main_source)
-
-      # Paginate categories
-      categories = arts_docs.map { |d| d.data['category'] }.compact.uniq
-      categories.each do |cat|
-        cat_docs = arts_docs.select { |d| d.data['category'] == cat }
-        base = "/arts/categories/#{Jekyll::Utils.slugify(cat)}/"
-        paginate(site, cat_docs, base, items_per_page, nil, { 'layout' => 'art_category', 'category' => cat, 'title' => "Arts in #{cat}" })
-      end
-
-      # Paginate tags
-      tags = Set.new
-      arts_docs.each { |d| tags.merge(d.data['tags']) if d.data['tags'] }
-      tags.to_a.compact.uniq.each do |tag|
-        tag_docs = arts_docs.select { |d| d.data['tags'] && d.data['tags'].include?(tag) }
-        base = "/arts/tags/#{Jekyll::Utils.slugify(tag)}/"
-        paginate(site, tag_docs, base, items_per_page, nil, { 'layout' => 'art_tag', 'tag' => tag, 'title' => "Arts tagged with #{tag}" })
-      end
     end
 
     private
@@ -41,7 +22,7 @@ module Jekyll
       total_pages = (docs.size.to_f / items_per_page).ceil
 
       # If a page already exists at the base_url (page 1), inject its pagination data
-      # This handles the canonical index (e.g. /arts/) and taxonomy-generated pages
+      # This handles the canonical index (e.g. /arts/)
       first_page_docs = docs.slice(0, items_per_page) || []
       source_page = site.pages.find { |p| p.url == base_url }
       if source_page
@@ -52,7 +33,8 @@ module Jekyll
             'title' => (d.data['title'] || d.data['name'] || File.basename(d.relative_path, File.extname(d.relative_path))).to_s,
             'url' => (d.url || ''),
             'image' => (d.data['image'] || ''),
-            'date' => (d.data['date'] || '')
+            'date' => (d.data['date'] || ''),
+            'content' => (d.content || '')
           }
         end
         extra_data.each { |k, v| source_page.data[k] = v }
@@ -86,7 +68,7 @@ module Jekyll
       end
 
       # Ensure generated pages have their own permalink to avoid conflicts
-      # e.g. /arts/page2/ or /arts/categories/<slug>/page2/
+      # e.g. /arts/page2/
       self.data['permalink'] = File.join(base_url, "page#{page_num}/")
 
       # Set pagination data and merge any extra data (layout, tag/category)

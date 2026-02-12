@@ -7,9 +7,9 @@ layout: default
         <div class="row justify-content-center mb-5 mt-4">
             <div class="col-lg-10 text-center">
                 {% if page.category %}
-                <a href="/arts/categories/{{ page.category | slugify }}/" class="badge rounded-pill bg-primary-soft px-3 py-2 mb-3 fw-bold text-decoration-none">
+                <span class="badge rounded-pill bg-primary-soft px-3 py-2 mb-3 fw-bold text-decoration-none">
                     {{ page.category }}
-                </a>
+                </span>
                 {% endif %}
                 
                 <h1 class="display-4 fw-bold mb-3 text-dark">{{ page.title }}</h1>
@@ -17,7 +17,7 @@ layout: default
                 <div class="meta-info d-flex justify-content-center align-items-center mb-4">
                     {% if page.date %}
                     <span class="d-flex align-items-center mx-3">
-                        <i class="far fa-calendar-alt me-2"></i> {{ page.date | date: "%B %d, %Y" }}
+                        <i class="fi fi-rr-calendar me-2"></i> {{ page.date | date: "%B %d, %Y" }}
                     </span>
                     {% endif %}
                     
@@ -58,9 +58,9 @@ layout: default
                         <h5 class="mb-3 fw-bold text-muted text-uppercase small ls-1">Related Tags</h5>
                         <div class="d-flex flex-wrap gap-2">
                             {% for tag in page.tags %}
-                            <a href="/arts/tags/{{ tag | slugify }}/" class="badge rounded-pill bg-secondary-soft text-decoration-none px-3 py-2">
+                            <span class="badge rounded-pill bg-secondary-soft text-decoration-none px-3 py-2">
                                 #{{ tag }}
-                            </a>
+                            </span>
                             {% endfor %}
                         </div>
                     </div>

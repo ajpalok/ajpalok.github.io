@@ -23,7 +23,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                         <small class="text-body-secondary">
                           {% if art.category %}
-                            <a class="badge bg-secondary" href="/arts/categories/{{ art.category | slugify }}/">{{ art.category }}</a>
+                            <span class="badge text-secondary border border-secondary m-3 px-3 py-2 shadow-sm">{{ art.category }}</span>
                           {% endif %}
                         </small>
                         <div class="btn-group">
@@ -44,7 +44,7 @@
                 {% endif %}
             </div>
 
-            <a class="h2 text-center d-flex justify-content-center pt-8 mb-0" href="/arts/">
+            <a class="h2 text-center d-flex justify-content-center align-items-center pt-8 mb-0" href="/arts/">
               See All Arts
               <svg class="projects_link" width="30" height="30">
                 <use xlink:href="#box-arrow-right"></use>

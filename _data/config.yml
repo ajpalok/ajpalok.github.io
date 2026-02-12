@@ -30,3 +30,14 @@ github_username:  ajpalok
 linkedin_username: ajpalok
 youtube_username: ajpalok
 telegram_username: ajpalok
+
+#build settings
+
+comment_options:
+  hyvor-talk:
+    name: "Hyvor Talk"
+    id: 1520
+  telegram:
+    name: "Telegram"
+    id: "vqJkgnAX"
+    # id: ""

@@ -9,3 +9,23 @@
 @import "components/projects";
 @import "components/skills";
 @import "pages/detail-page";
+@import "pages/listing-page";
+
+// Custom styles for Abrar's portfolio
+
+.btn-primary {
+    color: white;
+    &:hover {
+        background-color: darken($primary, 10%);
+        color: white;
+    }
+}
+
+.btn-outline-primary {
+    color: $primary;
+    border-color: $primary;
+    &:hover {
+        background-color: darken($primary, 10%);
+        color: white;
+    }
+}

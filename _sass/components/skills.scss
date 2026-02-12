@@ -1,6 +1,6 @@
 // Skills Section Styles
 .skills-section {
-  background-color: #f8f9fa;
+  background-color: #f8f3f0;
   // dotted patterns on text in components/sections.scss
 }
 
@@ -16,7 +16,7 @@
 
     .nav-link {
       border-radius: 30px;
-      color: #64748b;
+      color: rgba($primary-text-emphasis, 0.8);
       font-weight: 600;
       padding: 0.75rem 1.5rem;
       transition: all 0.3s ease;
@@ -24,13 +24,13 @@
 
       &:hover {
         color: $primary;
-        background: rgba(102, 126, 234, 0.1);
+        background: rgba($primary, 0.1);
       }
 
       &.active {
         background: linear-gradient(135deg, $primary 0%, $secondary 100%);
         color: white;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 4px 15px rgba($primary, 0.4);
       }
     }
   }
@@ -65,7 +65,7 @@
     margin: 0;
     font-size: 1.1rem;
     font-weight: 700;
-    color: #2d3748;
+    color: $primary-text-emphasis;
   }
 }
 
@@ -127,7 +127,7 @@
   justify-content: space-between;
   margin-top: 0.75rem;
   font-size: 0.85rem;
-  color: #718096;
+  color: rgba($primary-text-emphasis, 1.0);
   font-weight: 500;
 }
 

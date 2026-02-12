@@ -1,3 +1,166 @@
-{% if site.telegram_comment_id and page.comment %}
-<script async src="https://comments.app/js/widget.js?3" data-comments-app-website="{{site.telegram_comment_id}}" data-limit="5" data-page-id="{{ page.url | absolute_url }}" data-color="FD7E14" data-dislikes="1" data-outlined="1"></script>
+{% assign comment_providers = "" | split: "," %}
+{% if site.data.config.comment_options.hyvor-talk.id != "" %}
+{% assign comment_providers = comment_providers | push: "hyvor-talk" %}
+{% endif %}
+{% if site.data.config.comment_options.telegram.id != "" %}
+{% assign comment_providers = comment_providers | push: "telegram" %}
+{% endif %}
+
+{% if comment_providers.size > 1 %}
+<!-- Comment Provider Tabs -->
+<div class="comment-tabs">
+  <div class="comment-tab-buttons">
+    {% for provider in comment_providers %}
+      <button class="comment-tab-btn {% if forloop.first %}active{% endif %}"
+              data-provider="{{ provider }}">
+        {% if provider == "telegram" %}
+          Telegram
+        {% elsif provider == "hyvor-talk" %}
+          Hyvor Talk
+        {% endif %}
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="comment-tab-content">
+    {% for provider in comment_providers %}
+      <div class="comment-tab-pane {% if forloop.first %}active{% endif %}"
+           data-provider="{{ provider }}">
+        {% if provider == "telegram" %}
+          <div id="telegram-comments">
+            <script
+              async src="https://comments.app/js/widget.js?3"
+              data-comments-app-website="{{site.data.config.comment_options.telegram.id}}"
+              data-limit="5"
+              data-page-id="{{ page.url | absolute_url }}"
+              data-color="FD7E14"
+              data-dislikes="1"
+              data-outlined="1">
+            </script>
+          </div>
+        {% elsif provider == "hyvor-talk" %}
+          <div id="hyvor-talk-comments">
+            <div id="hyvor-talk-view"></div>
+            <script>
+              var HYVOR_TALK_WEBSITE = {{ site.data.config.comment_options.hyvor-talk.id }};
+              var hyvor_talk_CONFIG = {
+                url: "{{ page.url | absolute_url }}",
+                id: "{{ page.url | absolute_url }}",
+                title: "{{ page.title }}"
+              };
+            </script>
+            <script async src="https://talk.hyvor.com/web-api/embed.js"></script>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+    .comment-tabs {
+    margin: 2rem 0;
+    border: 1px solid #f8f3f0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    }
+
+    .comment-tab-buttons {
+    display: flex;
+    background: #f8f3f0;
+    border-bottom: 1px solid #f8f3f0;
+    }
+
+    .comment-tab-btn {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    color: #FD7E14;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    }
+
+    .comment-tab-btn:hover {
+    background: #f8f3f0;
+    color: #FD7E14;
+    }
+
+    .comment-tab-btn.active {
+    background: #FD7E14;
+    color: white;
+    }
+
+    .comment-tab-btn i {
+    font-size: 1rem;
+    }
+
+    .comment-tab-content {
+    position: relative;
+    }
+
+    .comment-tab-pane {
+    display: none;
+    padding: 1rem;
+    min-height: 200px;
+    }
+
+    .comment-tab-pane.active {
+    display: block;
+    }
+
+    .comment-tab-pane #telegram-comments,
+    .comment-tab-pane #hyvor-talk-comments {
+    width: 100%;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.comment-tab-btn');
+    const tabPanes = document.querySelectorAll('.comment-tab-pane');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+        const provider = this.getAttribute('data-provider');
+
+        // Remove active class from all buttons and panes
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding pane
+        this.classList.add('active');
+        document.querySelector(`.comment-tab-pane[data-provider="${provider}"]`).classList.add('active');
+        });
+    });
+    });
+</script>
+
+{% else %}
+  <!-- Single comment provider - load directly -->
+    {% if site.data.config.comment_options.hyvor-talk.id != "" %}
+    <hyvor-talk-comments
+        website-id="{{ site.data.config.comment_options.hyvor-talk.id }}"
+        page-id="{{ page.url | absolute_url }}"
+        page-title="{{ page.title }}"
+    ></hyvor-talk-comments>
+    <script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
+    {% elsif site.data.config.comment_options.telegram.id != "" %}
+    <script
+        async src="https://comments.app/js/widget.js?3"
+        data-comments-app-website="{{site.data.config.comment_options.telegram.id}}"
+        data-limit="5"
+        data-page-id="{{ page.url | absolute_url }}"
+        data-color="FD7E14"
+        data-dislikes="1"
+        data-outlined="1"
+    ></script>
+  {% endif %}
 {% endif %}

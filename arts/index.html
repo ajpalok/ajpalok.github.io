@@ -4,76 +4,93 @@ title: Arts
 permalink: /arts/
 ---
 
-{% if site.arts and site.arts.size>0 %}
-<div class="row py-md-4 mx-0">
-    <div class="col-lg-6 col-md-8 mx-auto">
-        <h3 class="display-3 text-center">Arts</h3>
-    </div>
-    <div class="album py-5">
-      {% comment %} Debug: show current_page and paginated_arts size {% endcomment %}
-      {% if page.current_page %}<!-- current_page: {{ page.current_page }} -->{% else %}<!-- current_page: 1 -->{% endif %}
-      {% if page.paginated_arts %}<!-- paginated_arts_size: {{ page.paginated_arts | size }} -->{% else %}<!-- paginated_arts_size: (not set) -->{% endif %}
-      {% assign arts_sorted = site.arts | sort: 'date' | reverse %}
-      {% assign items_per_page = 12 %}
-      {% if page.current_page %}
-        {% assign current_page = page.current_page %}
-      {% else %}
-        {% assign current_page = 1 %}
-      {% endif %}
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% if page.paginated_arts %}
-              {% assign paginated_arts = page.paginated_arts %}
+<div class="listing-page-wrapper">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="listing-hero">
+                    <h1 class="display-4">{{ page.title }}</h1>
+                    <p class="lead">A collection of sketches, drawings, and digital art.</p>
+                </div>
+            </div>
+        </div>
+
+        {% if site.arts and site.arts.size > 0 %}
+            {% comment %} Pagination Logic {% endcomment %}
+            {% assign arts_sorted = site.arts | sort: 'date' | reverse %}
+            {% assign items_per_page = 12 %}
+            {% if page.current_page %}
+                {% assign current_page = page.current_page %}
             {% else %}
-              {% assign offset = current_page | minus: 1 | times: items_per_page %}
-              {% assign paginated_arts = arts_sorted | offset: offset | limit: items_per_page %}
+                {% assign current_page = 1 %}
             {% endif %}
-            {% for art in paginated_arts %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    <div class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/div">
-                    {% if art.image %}
-                        <img width="100%" height="255px" style="object-fit: cover;" src="{{ art.image }}" alt="{{ art.title | prepend: 'Image: ' }}">
-                    {% else %}
-                        <div style="height:225px;" class="w-100 bg-body-tertiary"></div>
-                    {% endif %}
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{ art.title | strip_html | truncate: 70 }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-body-secondary"></small>
-                        <div class="btn-group">
-                            <a href="{{art.url}}" type="button" class="btn btn-sm btn-outline-primary">
-                            Read 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <use xlink:href="#box-arrow-right"/>
-                            </svg>
+
+            {% if page.paginated_arts %}
+                {% assign paginated_arts = page.paginated_arts %}
+            {% else %}
+                {% assign offset = current_page | minus: 1 | times: items_per_page %}
+                {% assign paginated_arts = arts_sorted | offset: offset | limit: items_per_page %}
+            {% endif %}
+
+            <div class="row g-4">
+                {% for art in paginated_arts %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="listing-card">
+                        <div class="card-img-wrapper">
+                            {% if art.image %}
+                            <img src="{{ art.image }}" alt="{{ art.title }}">
+                            {% else %}
+                            <div style="height: 100%; width: 100%; background: #edf2f7; display: flex; align-items: center; justify-content: center;">
+                                <i class="fi fi-rr-picture fa-2x text-muted"></i>
+                            </div>
+                            {% endif %}
+
+                            <div class="card-img-overlay-hover">
+                                <a href="{{ art.url }}" class="btn-view" title="View Art">
+                                    <i class="fi fi-rr-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <span class="card-meta">
+                                {% if art.category %}{{ art.category }}{% else %}Art{% endif %}
+                            </span>
+
+                            <a href="{{ art.url }}" class="text-decoration-none">
+                                <h5 class="card-title">{{ art.title }}</h5>
                             </a>
+
+                            <p class="card-text">{{ art.content | strip_html | truncatewords: 15 }}</p>
+
                         </div>
+                        <div class="card-actions">
+                            <a href="{{ art.url }}" class="btn btn-primary w-100">View Art</a>
                         </div>
-                    </div>
                     </div>
                 </div>
-            {% endfor %}
+                {% endfor %}
             </div>
 
-            <!-- Pagination -->
+            <!-- Pagination Controls -->
             {% assign remainder = arts_sorted.size | modulo: items_per_page %}
             {% assign total_pages = arts_sorted.size | divided_by: items_per_page %}
             {% if remainder > 0 %}{% assign total_pages = total_pages | plus: 1 %}{% endif %}
+            
             {% if total_pages > 1 %}
-            <nav aria-label="Arts pagination" class="mt-5">
-              <ul class="pagination justify-content-center">
+            <nav aria-label="Arts pagination" class="d-flex justify-content-center">
+              <ul class="pagination">
                 {% if current_page > 1 %}
                   <li class="page-item">
                     {% if current_page == 2 %}
-                      <a class="page-link" href="/arts/">Previous</a>
+                          <a class="page-link" href="/arts/"><i class="fi fi-rr-angle-left"></i> Previous</a>
+                        {% else %}
+                          <a class="page-link" href="/arts/page{{ current_page | minus: 1 }}/"><i class="fi fi-rr-angle-left"></i> Previous</a>
+                        {% endif %}
+                      </li>
                     {% else %}
-                      <a class="page-link" href="/arts/page{{ current_page | minus: 1 }}/">Previous</a>
-                    {% endif %}
-                  </li>
-                {% else %}
-                  <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                      <li class="page-item disabled"><span class="page-link"><i class="fi fi-rr-angle-left"></i> Previous</span></li>
                 {% endif %}
                 
                 {% for page_num in (1..total_pages) %}
@@ -88,18 +105,19 @@ permalink: /arts/
                 
                 {% if current_page < total_pages %}
                   <li class="page-item">
-                    <a class="page-link" href="/arts/page{{ current_page | plus: 1 }}/">Next</a>
+                    <a class="page-link" href="/arts/page{{ current_page | plus: 1 }}/">Next <i class="fi fi-rr-angle-right"></i></a>
                   </li>
                 {% else %}
-                  <li class="page-item disabled"><span class="page-link">Next</span></li>
+                  <li class="page-item disabled"><span class="page-link">Next <i class="fi fi-rr-angle-right"></i></span></li>
                 {% endif %}
               </ul>
             </nav>
             {% endif %}
+
+        {% else %}
+        <div class="text-center py-5">
+            <p class="h4 text-muted">No arts published yet.</p>
         </div>
+        {% endif %}
     </div>
 </div>
-
-{% else %}
-    <p class="h2 text-center">No arts were published yet...</p>
-{% endif %}

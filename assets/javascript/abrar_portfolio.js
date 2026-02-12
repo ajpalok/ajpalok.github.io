@@ -1,6 +1,10 @@
 ---
+
 ---
+
+{%- comment %}
 gsap.registerPlugin(ScrollTrigger);
+{%- endcomment %}
 
 console.log(`%c
                    _    ____  ____      _    ____  _

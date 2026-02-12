@@ -49,7 +49,7 @@
       height: auto;
       max-height: 600px;
       object-fit: contain; // Changed to contain for Art pieces
-      background-color: #f8f9fa;
+      background-color: #f8f3f0;
       display: block; // Remove inline-block spacing
       margin: 0 auto;
     }
@@ -68,17 +68,17 @@
   
   // Typography refinements for markdown content
   h1, h2, h3, h4, h5, h6 {
-    color: #2d3748;
+    color: $primary-text-emphasis;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
   }
   
-  h2 { font-size: 1.75rem; border-bottom: 2px solid #edf2f7; padding-bottom: 0.5rem; }
+  h2 { font-size: 1.75rem; border-bottom: 2px solid #f8f3f0; padding-bottom: 0.5rem; }
   h3 { font-size: 1.5rem; }
   
   p, li {
-    color: #4a5568;
+    color: $dark;
     line-height: 1.8;
     font-size: 1.05rem;
   }
@@ -117,7 +117,7 @@
   }
   
   pre {
-    background-color: #2d3748;
+    background-color: $primary-text-emphasis;
     color: #f7fafc;
     padding: 1.5rem;
     border-radius: 0.5rem;
@@ -143,7 +143,7 @@
     border-left: 4px solid $primary;
     padding-left: 1rem;
     font-style: italic;
-    color: #718096;
+    color: $primary-text-emphasis;
     background: #f7fafc;
     padding: 1rem;
     border-radius: 0 8px 8px 0;
@@ -168,7 +168,7 @@
 // Meta info styles
 .meta-info {
   font-size: 0.9rem;
-  color: #718096;
+  color: $primary-text-emphasis;
   
   i {
     color: $primary;

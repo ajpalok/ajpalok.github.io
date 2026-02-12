@@ -3,50 +3,67 @@ layout: page
 title: Projects
 permalink: /projects/
 ---
-<section class="container">
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="fw-light text-center">Projects</h2>
-            <p class="text-body-secondary text-center">{{ site.data.index.projects.description }}</p>
-        </div>
-    </div>
-
-    {% if site.projects %} 
-    
-    
-    <div class="row">
-        
-        {% for project in site.projects reversed %}
-        <div class="col-12 py-2 col-lg-4 col-xl-3">
-                    <div class="card mx-auto" style="width: 18rem;">
-                        {% if project.image %}
-                        <img src="{{ project.image }}" class="card-img-top" alt="{{ project.name }}">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ project.name }}</h5>
-                            <p class="card-text">{{ project.description }}</p>
-                            <p class="card-text">{{ project.type }}</p>
-                            {% if project.code_link %}
-                            <a href="{{ project.code_link }}" class="btn btn-primary">Source Code</a>
-                            {% endif %}
-                            {% if project.web_url %}
-                            <a href="{{ project.web_url }}" class="btn btn-primary">Live Demo</a>
-                            {% endif %}
-                            <a href="{{project.url}}" class="btn btn-primary">Continue</a>
-                        </div>
-                      </div>
-    
+<div class="listing-page-wrapper">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="listing-hero">
+                    <h1 class="display-4">{{ page.title }}</h1>
+                    <p class="lead">{{ site.data.index.projects.description }}</p>
                 </div>
-                {% endfor %}
-    
             </div>
-    
-    
-    {% else %} 
-    
-        <p>No projects to show</p>
-    
-    {% endif %}
+        </div>
 
-</section>
+        {% if site.projects %}
+        <div class="row g-4">
+            {% for project in site.projects reversed %}
+            <div class="col-md-6 col-lg-4">
+                <div class="listing-card">
+                    <div class="card-img-wrapper">
+                        {% if project.image %}
+                        <img src="{{ project.image }}" alt="{{ project.name }}">
+                        {% else %}
+                        <div style="height: 100%; width: 100%; background: #edf2f7; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-project-diagram fa-2x text-muted"></i>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-img-overlay-hover">
+                            <a href="{{ project.url }}" class="btn-view" title="View Details">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        {% if project.type %}
+                        <span class="card-meta">{{ project.type }}</span>
+                        {% endif %}
+                        
+                        <a href="{{ project.url }}" class="text-decoration-none">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                        </a>
+                        
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+                    <div class="card-actions">
+                        {% if project.web_url %}
+                        <a href="{{ project.web_url }}" target="_blank" class="btn btn-primary">Live Demo</a>
+                        {% endif %}
+                        
+                        {% if project.code_link %}
+                        <a href="{{ project.code_link }}" target="_blank" class="btn btn-outline-primary">Code</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <p class="h4 text-muted">No projects to show yet.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
