@@ -24,9 +24,9 @@ pagination:
             </div>
         </div>
 
-        {% if site.arts and site.arts.size > 0 %}
+        {% if paginator.posts and paginator.posts.size > 0 %}
             <div class="row g-4">
-                {% for art in site.arts %}
+                {% for art in paginator.posts %}
                 <div class="col-md-6 col-lg-4">
                     <div class="listing-card">
                         <div class="card-img-wrapper">
