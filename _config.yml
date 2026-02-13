@@ -1,7 +1,7 @@
 # Welcome to Abrar's Porfolio!
 
 # URL settings
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: ENV['JEKYLL_URL'] || "https://ajpalok.github.io" # Uses environment variable if available, falls back to hardcoded URL
 baseurl: "" # the subpath of your site, e.g. /blog
 
 # Build settings
