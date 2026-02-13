@@ -1,0 +1,6 @@
+# Production config for GitHub Pages
+# This file overrides the main _config.yml for production builds
+
+# URL settings
+url: "https://ajpalok.github.io"
+baseurl: ""

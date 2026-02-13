@@ -33,7 +33,7 @@ tags:
 ---
 Title:‌ My motherland Bangladesh
 
-Art Work by: [Abrar Jahin](https://2haas.ml/authors/ajpalok/) 
+Art Work by: [Abrar Jahin](https://2haas.com/authors/ajpalok/) 
    
 A simple scene of the beauty of **Bangla**, the scenario of **Beautiful Bangladesh**.
   

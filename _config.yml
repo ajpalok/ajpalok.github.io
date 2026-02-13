@@ -1,7 +1,7 @@
 # Welcome to Abrar's Porfolio!
 
 # URL settings
-url: ENV['JEKYLL_URL'] || "https://ajpalok.github.io" # Uses environment variable if available, falls back to hardcoded URL
+url: "http://127.0.0.1" # Will be overridden by JEKYLL_URL environment variable if set
 baseurl: "" # the subpath of your site, e.g. /blog
 
 # Build settings

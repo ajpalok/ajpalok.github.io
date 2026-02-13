@@ -24,11 +24,9 @@ pagination:
             </div>
         </div>
 
-        {% if paginator.posts and paginator.posts.size > 0 %}
-            {% comment %} Pagination Logic {% endcomment %}
-
+        {% if site.arts and site.arts.size > 0 %}
             <div class="row g-4">
-                {% for art in paginator.posts %}
+                {% for art in site.arts %}
                 <div class="col-md-6 col-lg-4">
                     <div class="listing-card">
                         <div class="card-img-wrapper">
