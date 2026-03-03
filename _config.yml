@@ -85,3 +85,7 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - "firebase.json"
+  - ".firebaserc"
+  - "firebase-debug.log"
+  - "firebase-debug.*.log"

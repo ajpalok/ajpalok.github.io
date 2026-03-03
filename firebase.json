@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "site": "ajpalok",
+    "public": "_site",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "README.md"
+    ]
+  }
+}
