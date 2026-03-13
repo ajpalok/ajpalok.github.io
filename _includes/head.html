@@ -3,7 +3,11 @@
 {%- assign title = page.title | append: " | " | append: site.data.config.main_title -%}
 {%- endif -%}
 
-{% assign image = "https://dummyimage.com/600x315/f08a5d/000000.svg&text=" | append : site.data.config.main_title %}
+{% comment %}
+assign image = "https://dummyimage.com/600x315/f08a5d/000000.svg&text=" | append : site.data.config.main_title
+{% endcomment %}
+
+{% assign image = "/assets/images/me/Abrar_OpenGraph_Image.png" %}
 {%- if page.image -%}
     {%- assign image = page.image -%}
 {%- endif -%}
@@ -29,6 +33,8 @@
 {%- endif -%}
 
 <meta property="og:image" content="{{ image }}"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="{{ site.data.config.language }}">
 <meta property="og:type" content="article">
 <meta property="fb:app_id" content="156037212742246">
