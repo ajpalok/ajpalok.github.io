@@ -13,7 +13,10 @@ const nextConfig = {
   distDir: 'dist',
 
   // Optional: Disable image optimization and use unoptimized images
-  images: { unoptimized: true } 
+  images: { unoptimized: true },
+
+  // Allow HMR from localhost in development
+  allowedDevOrigins: ['127.0.0.1', 'localhost']
 };
 
 export default nextConfig;
