@@ -63,7 +63,7 @@ export default function HeroSection() {
                     <div className="pt-8 space-y-6">
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row sm:justify-center md:justify-start gap-4">
-                            <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors duration-300">
+                            <Link href="/#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors duration-300">
                                 Get in Touch
                             </Link>
                             <Link href="/projects" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/40 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300">
