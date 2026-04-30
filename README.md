@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img src="https://media.giphy.com/media/9igGG6KxpY0eY0Sr5u/giphy.gif" width="100%" height="100%" style="margin-bottom:30px;">
 
-## Getting Started
 
-First, run the development server:
+<h1 align="center">Hi 👋, I'm Abrar Jahin</h1>
+<p align="center">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<div style="display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;">
+  <a href="https://linkedin.com/in/ajpalok/">
+    <img style="margin: 0 10px; border-radius: 10px;" src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+  <a href="https://facebook.com/ajpalok.fb">
+    <img src="https://img.shields.io/badge/facebook-blue?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook Badge"/>
+  </a>
+  <a href="https://twitter.com/ajpalok">
+    <img src="https://img.shields.io/badge/Twitter-blue?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge"/>
+  </a>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h3 align="center">Student from Bangladesh 🇧🇩 with the sprite of coding for Humans...</h3>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+<img src="https://media.giphy.com/media/7NoNw4pMNTvgc/giphy.gif" width="100%" height="100%" style="margin-bottom:30px;">
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<p align="center"><img src="https://github-profile-trophy.vercel.app/?username=ajpalok&theme=onedark" alt="ajpalok" /></p>
 
-## Learn More
+<p style="text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 30px;">Visit to my <a href="https://ajpalok.github.io">Portfolio</a> to know more about me... 😊 </p>
 
-To learn more about Next.js, take a look at the following resources:
+- 🔭 I’m currently working on [2HAAS](https://github.com/2HAAS)...
+- 📫 How to reach me: [Abrar Jahin](https://m.me/ajpalok.fb)
+- 😄 Pronouns: **he/him**
+- ⚡ Fun fact: I love to make [drawings](https://2haas.com)🤓
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=ajpalok&show_icons=true&theme=onedark" alt="Abrar Jahin" /> </p>
+<p align="center"> <img src="https://komarev.com/ghpvc/?username=ajpalok" alt="ajpalok" /> </p>
