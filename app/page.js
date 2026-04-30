@@ -11,6 +11,7 @@ import { getAllAchievements } from '@/lib/achievements';
 import { getAllArticles } from '@/lib/articles';
 import { getAllProjects } from '@/lib/projects';
 import { getProjectSchema, getArticleSchema, getAchievementSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas';
+import { buildUrl } from '@/lib/config';
 
 export default async function Home() {
   const achievements = await getAllAchievements();
@@ -19,7 +20,7 @@ export default async function Home() {
 
   // Build schemas for featured items
   const breadcrumbs = getBreadcrumbSchema([
-    { name: 'Home', url: 'https://ajpalok.github.io' },
+    { name: 'Home', url: buildUrl() },
   ]);
 
   const projectSchemas = projects.slice(0, 6).map((p) =>

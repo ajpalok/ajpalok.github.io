@@ -3,6 +3,7 @@ import { getAllAchievements } from '@/lib/achievements'
 import { Metadata } from 'next'
 import AchievementsTimeline from '@/components/AchievementsTimeline'
 import { getAchievementSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas'
+import { buildUrl } from '@/lib/config'
 
 export const metadata = {
   title: 'Achievements',
@@ -13,8 +14,8 @@ export default async function AchievementsPage() {
   const achievements = await getAllAchievements()
 
   const breadcrumbs = getBreadcrumbSchema([
-    { name: 'Home', url: 'https://ajpalok.github.io' },
-    { name: 'Achievements', url: 'https://ajpalok.github.io/achievements' },
+    { name: 'Home', url: buildUrl() },
+    { name: 'Achievements', url: buildUrl('/achievements') },
   ])
 
   const achievementSchemas = achievements.map((ach) =>

@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import PageLoader from "@/components/PageLoader";
 import Footer from "@/components/Footer";
 import { getPortfolioSchema, getPersonSchema, getOrganizationSchema } from "@/lib/jsonld-schemas";
+import { SITE_CONFIG, buildUrl } from "@/lib/config";
 
 const exo2 = Exo_2({
   variable: "--font-exo-2",
@@ -13,17 +14,17 @@ const exo2 = Exo_2({
 });
 
 export const metadata = {
-  title: "Abrar Jahin's Portfolio",
-  description: "Welcome to my portfolio website! I'm Abrar Jahin, a passionate software developer specializing in web development and design. Here, you'll find a showcase of my projects, skills, and experience. Feel free to explore and get in touch if you'd like to collaborate or learn more about my work.",
-  metadataBase: new URL("https://ajpalok.github.io"),
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
+  metadataBase: new URL(SITE_CONFIG.baseUrl),
   openGraph: {
     type: "website",
-    siteName: "Abrar Jahin's Portfolio",
-    title: "Abrar Jahin's Portfolio",
-    description: "Welcome to my portfolio website! I'm Abrar Jahin, a passionate software developer specializing in web development and design. Here, you'll find a showcase of my projects, skills, and experience. Feel free to explore and get in touch if you'd like to collaborate or learn more about my work.",
+    siteName: SITE_CONFIG.siteName,
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
     images: [
       {
-        url: "/assets/images/me/Abrar_OpenGraph_Image.png",
+        url: SITE_CONFIG.images.ogImage,
         width: 1200,
         height: 630,
         alt: "Abrar Jahin portfolio open graph image",
@@ -32,9 +33,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abrar Jahin's Portfolio",
-    description: "Welcome to my portfolio website! I'm Abrar Jahin, a passionate software developer specializing in web development and design. Here, you'll find a showcase of my projects, skills, and experience. Feel free to explore and get in touch if you'd like to collaborate or learn more about my work.",
-    images: ["/assets/images/me/Abrar_OpenGraph_Image.png"],
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.images.ogImage],
   },
 };
 

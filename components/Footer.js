@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import SocialMediaLinks from './SocialMediaLinks';
-import { details } from './contact';
+import { contactDetails } from '@/lib/contactDetails';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -66,13 +66,13 @@ export default function Footer() {
               </div>
               <div>
                 <a
-                  href={`mailto:${details.email}`}
+                  href={`mailto:${contactDetails.email}`}
                   className="text-sm text-white hover:text-gray-400 transition-colors inline-flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M2 6.5C2 4.57 3.57 3 5.5 3h13C20.43 3 22 4.57 22 6.5v11c0 1.93-1.57 3.5-3.5 3.5h-13C3.57 21 2 19.43 2 17.5v-11zM5 6v.01L12 11l7-4.99V6H5zm0 2.24V17.5c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5V8.24l-7.49 5.01a1 1 0 01-1.02 0L5 8.24z" />
                   </svg>
-                  <span>{details.email}</span>
+                  <span>{contactDetails.email}</span>
                 </a>
               </div>
             </div>

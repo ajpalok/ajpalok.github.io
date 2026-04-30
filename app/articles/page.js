@@ -2,6 +2,7 @@ import Script from 'next/script';
 import ArticlesPageClient from './ArticlesPageClient';
 import { getAllArticles } from '@/lib/articles';
 import { getArticleSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas';
+import { buildUrl } from '@/lib/config';
 
 export const metadata = {
   title: 'All Articles | Abrar Jahin',
@@ -12,8 +13,8 @@ export default async function ArticlesPage() {
   const articles = await getAllArticles();
 
   const breadcrumbs = getBreadcrumbSchema([
-    { name: 'Home', url: 'https://ajpalok.github.io' },
-    { name: 'Articles', url: 'https://ajpalok.github.io/articles' },
+    { name: 'Home', url: buildUrl() },
+    { name: 'Articles', url: buildUrl('/articles') },
   ]);
 
   const articleSchemas = articles.map((a) =>

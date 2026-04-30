@@ -2,13 +2,14 @@ import Script from 'next/script';
 import { getAllProjects } from '@/lib/projects';
 import ProjectsListClient from './ProjectsListClient';
 import { getProjectSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas';
+import { buildUrl } from '@/lib/config';
 
 export default function ProjectsPage() {
   const projects = getAllProjects();
 
   const breadcrumbs = getBreadcrumbSchema([
-    { name: 'Home', url: 'https://ajpalok.github.io' },
-    { name: 'Projects', url: 'https://ajpalok.github.io/projects' },
+    { name: 'Home', url: buildUrl() },
+    { name: 'Projects', url: buildUrl('/projects') },
   ]);
 
   const projectSchemas = projects.map((p) =>

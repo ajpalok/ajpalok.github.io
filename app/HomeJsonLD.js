@@ -1,11 +1,12 @@
 import Script from 'next/script';
 import { getAllProjects } from '@/lib/projects';
-import { getArticleSchema, getProjectSchema, getAchievementSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas';
+import { getProjectSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas';
+import { buildUrl } from '@/lib/config';
 
 export async function HomeJsonLD() {
   const projects = getAllProjects();
   const breadcrumbs = getBreadcrumbSchema([
-    { name: 'Home', url: 'https://ajpalok.github.io' },
+    { name: 'Home', url: buildUrl() },
   ]);
 
   // Build schemas for featured/sample items

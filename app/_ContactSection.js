@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 // import gsap from "gsap";
 import { IndividualIcon } from "@/components/SVGS";
-import { details } from '@/components/contact';
+import { contactDetails } from '@/lib/contactDetails';
 
 export default function ContactSection() {
     const submittedRef = useRef(false);
@@ -100,8 +100,8 @@ export default function ContactSection() {
                                     <IndividualIcon iconName="mail" className="w-6 h-6 mx-auto fill-white" />
                                 </div>
                                 <p>Email</p>
-                                <a href={`mailto:${details.email}`} className="text-white normal-case tracking-normal text-sm">
-                                    {details.email}
+                                <a href={`mailto:${contactDetails.email}`} className="text-white normal-case tracking-normal text-sm">
+                                    {contactDetails.email}
                                 </a>
                             </div>
 
@@ -110,8 +110,8 @@ export default function ContactSection() {
                                     <IndividualIcon iconName="phone" className="w-6 h-6 mx-auto fill-white" />
                                 </div>
                                 <p>Phone</p>
-                                <a href={`tel:${details.phone}`} className="text-white normal-case tracking-normal text-sm">
-                                    {details.phone}
+                                <a href={`tel:${contactDetails.phone}`} className="text-white normal-case tracking-normal text-sm">
+                                    {contactDetails.phone}
                                 </a>
                             </div>
                         </div>
