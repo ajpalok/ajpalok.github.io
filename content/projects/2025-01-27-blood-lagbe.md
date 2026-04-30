@@ -1,0 +1,77 @@
+---
+slug: blood-lagbe
+date: 2025-01-27
+name: Blood Lagbe
+subHeading: "Blood Lagbe is a web application that helps people find blood donors in their area."
+description: "Blood Lagbe is a web application that helps people find blood donors in their area."
+type: Web Application
+code_link: 
+web_url: https://bloodlagbe.2haas.com/
+image: /assets/images/uploads/projects/blood-lagbe-cover.png
+featured: true
+---
+
+## Overview
+
+This website is designed to connect donors with recipients effortlessly without any hassle. Users can easily apply for blood requests which will be automatically posted on social media, find donors in a specific location, schedule appointments, and track donors history. The platform promotes community health by streamlining the process of saving lives through blood donations in an easy way.
+
+Project Introduction: [https://youtu.be/uHiY2Dgygic](https://youtu.be/uHiY2Dgygic)
+
+### Objectives:
+
+ 1. Facilitate quick and easy connection between blood donor and recipient.
+ 2. Build a community driver platform for live-saving donations.
+
+### Solution Proposal
+
+To address the critical issue of blood shortages, we propose an online platform that connects blood donors with recipients in real-time. The system will enable users to request blood donations, find suitable donors in their vicinity, and automate the process of updating blood request posts on social media to increase visibility. This solution will ensure a more efficient and faster response in emergency situations.
+
+### Tech Stack
+
+- **Frontend**:
+    - HTML, CSS, JavaScript
+    - Bootstrap
+    - jQuery
+- **Backend**: 
+    - PHP
+    - MySQL
+- **Hosting**: 
+    - cPanel (Shared Production Server)
+    - XAMPP (Local Development Server)
+- **Social Media Integration**: 
+    - Facebook Graph API
+    - Telegram API
+
+## Workflow
+
+The system streamlines blood donation by connecting donors, patients, and hospitals. Users can request blood, donors can update availability, and hospitals can verify donor eligibility.
+
+## Motivation
+
+Blood shortages remain a critical issue, often leading to delays in life-saving treatments. Many patients struggle to find donors on time, and existing systems lack efficiency in donor-recipient connections. **Blood Lagbe** was created to simplify this process by providing a reliable, technology-driven platform that ensures quick donor matching, hospital verification, and automated request visibility. Our goal is to make blood donation effortless, secure, and widely accessible, ultimately saving more lives.
+
+## Features
+
+Here are the key features that set us apart and help connect donors to those in need seamlessly:
+
+1. **Application form for blood request:** Submit a simple application form to request blood.
+2. **Automatic social media post:** After submitting the form it will be posted on social media automatically.
+3. **Passwordless system:** Secure and hassle-free login with a passwordless system, using email or phone verification for quick access.
+4. **Profile and login management:** Easily manage your profile and access your account with a simple, user-friendly login system.
+5. **GPS and Map integrated:** Seamlessly integrated GPS and maps to locate nearby donors, donation centers, and hospitals with ease.
+6. **Area based donor filtering:** Quickly find blood donors in your area using location-based filtering, ensuring faster connections during emergencies.
+7. **Donor Application form:** A straightforward form for donors to sign up, share their minimal details, and start saving lives easily.
+8. **Admin dashboard:** A minimal role based admin dashboard to manage donors, requests, and track donations, ensuring smooth operation and quick decision-making.
+
+## Unique aspects
+
+Our platform simplifies blood donation with key features:
+
+1. **Automatic Social Media Posts:** Blood requests shared instantly on multiple media to get quicker responses.
+2. **Passwordless Login:** Secure access without passwords, using email or phone and one-time password (OTP).
+3. **GPS & Maps:** Easily find nearby donors and donation centers.
+4. **Area-Based Filtering:** Connects donors and recipients nearby for faster matches.
+5. **Social media posts:** Applying for blood requests on the website also makes posts to all available social media and that will be managed in one place.
+6. **Naming Convention:** Our solution is designed to be unforgettable, ensuring users can easily recall it whenever they need blood — Blood Lagbe.
+
+These features make donating blood easier and faster, helping save more lives

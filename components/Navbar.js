@@ -10,10 +10,10 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
+    { href: "https://docs.google.com/document/d/1__6xncJIf7r54OtQyr2iMIp_feQ2gEZyfQzXjXKNCMY/edit?usp=portfolio", label: "Resume" },
     { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/articles", label: "Articles" },
+    { href: "/achievements", label: "Achievements" },
   ];
 
   return (
@@ -46,9 +46,9 @@ export default function Navbar() {
           aria-expanded={isOpen}
         >
           <div className="flex flex-col justify-center items-center h-6 w-6 space-y-1.5 relative z-50">
-            <span className={`block h-[1px] w-full bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[7px]' : ''}`}></span>
-            <span className={`block h-[1px] w-full bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block h-[1px] w-full bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[7px]' : ''}`}></span>
+            <span className={`block h-px w-full bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.75' : ''}`}></span>
+            <span className={`block h-px w-full bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block h-px w-full bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.75' : ''}`}></span>
           </div>
         </button>
       </div>
