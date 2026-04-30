@@ -24,9 +24,9 @@ export default function ProjectsListClient({ projects }) {
             value="all"
             checked={filter === 'all'}
             onChange={() => setFilter('all')}
-            className="h-4 w-4 text-white bg-black ring-white"
+            className="h-5 w-5 accent-gray-300 cursor-pointer"
           />
-          <label htmlFor="filter-all" className="text-sm text-gray-300">All Projects</label>
+          <label htmlFor="filter-all" className="text-sm text-gray-300 cursor-pointer">All Projects</label>
         </div>
 
         <div className="flex items-center gap-3">
@@ -37,9 +37,9 @@ export default function ProjectsListClient({ projects }) {
             value="featured"
             checked={filter === 'featured'}
             onChange={() => setFilter('featured')}
-            className="h-4 w-4 text-white bg-black ring-white"
+            className="h-5 w-5 accent-gray-300 cursor-pointer"
           />
-          <label htmlFor="filter-featured" className="text-sm text-gray-300">Featured</label>
+          <label htmlFor="filter-featured" className="text-sm text-gray-300 cursor-pointer">Featured</label>
         </div>
       </div>
 
