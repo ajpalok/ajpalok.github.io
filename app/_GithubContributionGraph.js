@@ -53,7 +53,7 @@ export default function GithubContributionGraph({ username = 'ajpalok' }) {
       text.setAttribute('x', '0');
       text.setAttribute('y', 35 + dayIndex * (CELL_SIZE + CELL_GAP) + 12);
       text.setAttribute('font-size', '12');
-      text.setAttribute('fill', '#6b7280');
+      text.setAttribute('fill', '#9b8b78');
       text.setAttribute('font-family', 'monospace');
       text.textContent = label;
       svg.appendChild(text);
@@ -70,7 +70,7 @@ export default function GithubContributionGraph({ username = 'ajpalok' }) {
         text.setAttribute('x', monthLabelX);
         text.setAttribute('y', '20');
         text.setAttribute('font-size', '12');
-        text.setAttribute('fill', '#6b7280');
+        text.setAttribute('fill', '#9b8b78');
         text.setAttribute('font-family', 'monospace');
         text.textContent = month;
         svg.appendChild(text);
@@ -106,87 +106,64 @@ export default function GithubContributionGraph({ username = 'ajpalok' }) {
 
   if (error) {
     return (
-      <section className="w-full bg-[#050505] text-white py-16 px-6 md:px-12 lg:px-24">
+      <section className="w-full bg-paper text-ink py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <p className="text-red-400">Error loading contribution data: {error}</p>
+          <p className="text-accent-2">Error loading contribution data: {error}</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section className="w-full bg-[#050505] text-white py-16 px-6 md:px-12 lg:px-24">
+    <section className="w-full bg-paper text-ink py-20 md:py-28 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-6">
-          <div className="space-y-2 max-w-2xl">
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-gray-500">GitHub Activity</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
-              Contribution <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-600 italic">Graph</span>
+        <div className="flex flex-col md:flex-row justify-between md:items-end mb-10 gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-accent-2 mb-4">
+              <span className="h-px w-8 bg-accent" />
+              GitHub Activity
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95]">
+              A Year in Commits<span className="text-accent">.</span>
             </h2>
-            <p className="text-gray-400 text-sm">Last year of contributions on GitHub. Each square represents a day.</p>
+            <p className="text-ink-2 text-sm mt-4">Each square is a day. The warmer it burns, the busier it was.</p>
           </div>
 
-          {/* Controls */}
-          <div className="flex items-center gap-3">
-            {/* <button
-              onClick={() => setView('year')}
-              className={`text-xs font-mono uppercase tracking-widest px-3 py-2 rounded transition-all ${
-                view === 'year'
-                  ? 'bg-white/8 border-white/20'
-                  : 'bg-transparent border-white/5 hover:border-white/10'
-              } border`}
-            >
-              Year
-            </button>
-            <button
-              onClick={() => setView('month')}
-              className={`text-xs font-mono uppercase tracking-widest px-3 py-2 rounded transition-all ${
-                view === 'month'
-                  ? 'bg-white/8 border-white/20'
-                  : 'bg-transparent border-white/5 hover:border-white/10'
-              } border`}
-            >
-              6 Months
-            </button> */}
-            <Link
-              href={`https://github.com/${username}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2 text-xs font-mono uppercase tracking-widest border-b border-white/20 pb-0.5 hover:border-white transition-colors"
-            >
-              Profile
-            </Link>
-          </div>
+          <Link
+            href={`https://github.com/${username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 group w-fit text-xs font-mono uppercase tracking-widest text-ink-2"
+          >
+            @{username}
+            <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">↗</span>
+          </Link>
         </div>
 
         {/* Contribution Graph */}
-        <div className="bg-white/2 p-6 rounded-lg border border-white/5 overflow-x-auto">
+        <div className="bg-paper-2 bg-blueprint-fine p-5 md:p-6 rounded-lg border border-line overflow-x-auto">
           {loading ? (
             <div className="h-40 flex items-center justify-center">
-              <p className="text-gray-400 font-mono text-sm">Loading contributions...</p>
+              <p className="text-ink-3 font-mono text-sm">Loading contributions…</p>
             </div>
           ) : (
-            <svg
-              ref={svgRef}
-              className="w-full h-auto min-h-50"
-              style={{ filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.05))' }}
-            />
+            <svg ref={svgRef} className="w-full h-auto min-h-50" />
           )}
         </div>
 
         {/* Legend */}
-        <div className="mt-6 flex items-center gap-4 flex-wrap text-xs">
-          <span className="text-gray-400 font-mono">Less</span>
+        <div className="mt-5 flex items-center gap-2.5 flex-wrap text-xs">
+          <span className="text-ink-3 font-mono mr-1">Less</span>
           {[0, 1, 2, 3, 4].map((level) => (
             <div
               key={level}
-              className="w-4 h-4 rounded-sm"
+              className="w-3.5 h-3.5 rounded-[3px] ring-1 ring-ink/5"
               style={{ backgroundColor: getContributionColor(level) }}
               title={`${level} contribution level`}
             />
           ))}
-          <span className="text-gray-400 font-mono">More</span>
+          <span className="text-ink-3 font-mono ml-1">More</span>
         </div>
       </div>
     </section>

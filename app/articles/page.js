@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import { Suspense } from 'react';
 import ArticlesPageClient from './ArticlesPageClient';
 import { getAllArticles } from '@/lib/articles';
 import { getArticleSchema, getBreadcrumbSchema } from '@/lib/jsonld-schemas';
@@ -42,7 +43,9 @@ export default async function ArticlesPage() {
           strategy="afterInteractive"
         />
       ))}
-      <ArticlesPageClient articles={articles} />
+      <Suspense fallback={<div className="min-h-screen bg-paper" />}>
+        <ArticlesPageClient articles={articles} />
+      </Suspense>
     </>
   );
 }

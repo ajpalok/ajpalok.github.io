@@ -47,87 +47,65 @@ export default function ContactSection() {
     return (
         <section
             id="contact"
-            className="w-full relative bg-[#050505] text-white py-16 px-6 lg:px-24 pb-18 md:pb-36 md:px-12"
+            className="w-full relative bg-paper text-ink py-20 md:py-28 px-6 lg:px-24 pb-24 md:pb-36 md:px-12 overflow-hidden"
         >
+            {/* Blueprint texture + soft accent glow */}
+            <div className="absolute inset-0 bg-blueprint pointer-events-none select-none z-0" />
+            <span className="hidden md:block absolute -top-10 right-10 w-96 h-96 rounded-full bg-accent-tint blur-3xl opacity-60 pointer-events-none" />
 
-            {/* SVG Pattern Background with Gradient Blobs */}
-            <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
-
-                {/* Gradient Blobs using Tailwind */}
-                <span className="hidden md:block absolute top-5 right-1/4 w-96 h-96 bg-linear-to-br from-gray-600 to-gray-800 rounded-full filter blur-3xl opacity-20 mix-blend-multiply"></span>
-                <span className="hidden md:block absolute top-1/5 right-2/3 w-80 h-80 bg-linear-to-tl from-gray-700 to-gray-500 rounded-full filter blur-3xl opacity-15 mix-blend-screen"></span>
-                {/* <span className="hidden md:block absolute top-1/3 right-1/4 w-72 h-72 bg-linear-to-b from-gray-500 via-gray-700 to-gray-900 rounded-full filter blur-2xl opacity-10 mix-blend-multiply"></span> */}
-
-                {/* Subtle Radial Gradient Vignette */}
-                <div className="absolute inset-0" style={{
-                    background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0) 0%, rgba(0,0,0,0.2) 100%)'
-                }}></div>
-            </div>
-
-            <div className="max-w-7xl mx-auto">
+            <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Heading */}
-                <div className="mb-12 space-y-4 max-w-2xl text-center mx-auto">
-                    {/* <p className="font-mono text-xs tracking-[0.3em] uppercase text-gray-500">
-                        Contact
-                    </p> */}
-
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111] hover:bg-[#222] border border-white/10 transition-colors group cursor-default">
+                <div className="mb-14 space-y-4 max-w-2xl text-center mx-auto">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-tint border border-accent/30 text-accent-ink font-mono text-[11px] uppercase tracking-[0.2em]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                         Get in touch
                     </span>
 
-
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
-                        Let's Build Something{" "}
-                        <span
-                        // ref={wordRef}
-                        className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-600 italic">
-                            Amazing.
-                        </span>
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95]">
+                        Let's Build Something Amazing<span className="text-accent">.</span>
                     </h2>
 
-                    <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-                        Want to collaborate? Let's contact!
+                    <p className="text-ink-2 text-sm md:text-base leading-relaxed">
+                        Got a system worth designing? Let's talk.
                     </p>
                 </div>
 
                 {/* Layout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                     {/* Left Info */}
-                    <div className="space-y-6 text-gray-400 text-sm leading-relaxed">
+                    <div className="space-y-6 text-ink-2 text-sm leading-relaxed">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
-                            <div className="py-6 px-9 text-center bg-[#0e1011] text-gray-500 border border-white/10 rounded-md">
-                                <div className="w-fit flex justify-center p-4 mb-2 mx-auto rounded-full bg-gray-600/30">
-                                    <IndividualIcon iconName="mail" className="w-6 h-6 mx-auto fill-white" />
+                            <div className="py-6 px-9 text-center bg-paper-2 text-ink-3 border border-line rounded-md">
+                                <div className="w-fit flex justify-center p-4 mb-2 mx-auto rounded-full bg-accent-tint">
+                                    <IndividualIcon iconName="mail" className="w-6 h-6 mx-auto fill-accent" />
                                 </div>
                                 <p>Email</p>
-                                <a href={`mailto:${contactDetails.email}`} className="text-white normal-case tracking-normal text-sm">
+                                <a href={`mailto:${contactDetails.email}`} className="text-ink normal-case tracking-normal text-sm hover:text-accent transition-colors">
                                     {contactDetails.email}
                                 </a>
                             </div>
 
-                            <div className="py-6 px-9 text-center bg-[#0e1011] text-gray-500 border border-white/10 rounded-md">
-                                <div className="w-fit flex justify-center p-4 mb-2 mx-auto rounded-full bg-gray-600/30">
-                                    <IndividualIcon iconName="phone" className="w-6 h-6 mx-auto fill-white" />
+                            <div className="py-6 px-9 text-center bg-paper-2 text-ink-3 border border-line rounded-md">
+                                <div className="w-fit flex justify-center p-4 mb-2 mx-auto rounded-full bg-accent-tint">
+                                    <IndividualIcon iconName="phone" className="w-6 h-6 mx-auto fill-accent" />
                                 </div>
                                 <p>Phone</p>
-                                <a href={`tel:${contactDetails.phone}`} className="text-white normal-case tracking-normal text-sm">
+                                <a href={`tel:${contactDetails.phone}`} className="text-ink normal-case tracking-normal text-sm hover:text-accent transition-colors">
                                     {contactDetails.phone}
                                 </a>
                             </div>
                         </div>
 
                         {/* Availability Info */}
-                        <div className="space-y-2 text-xs font-mono text-gray-500 mx-auto mt-12 text-center py-6 px-9 bg-[#0e1011] border border-white/10 rounded-md">
-                            <p
-                                className="text-white text-sm relative inline-flex items-center gap-2"
-                            >
+                        <div className="space-y-2 text-xs font-mono text-ink-3 mx-auto mt-12 text-center py-6 px-9 bg-paper-2 border border-line rounded-md">
+                            <p className="text-ink text-sm relative inline-flex items-center gap-2">
                                 <span className="relative flex size-3">
-                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gray-100 opacity-75"></span>
-                                    <span className="relative inline-flex size-3 rounded-full bg-white"></span>
+                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+                                    <span className="relative inline-flex size-3 rounded-full bg-accent"></span>
                                 </span>
                                 Available Now
                             </p>
-                            <p className="text-gray-400 text-sm">
+                            <p className="text-ink-2 text-sm">
                                 Open for collaboration, freelance work and discussing system
                                     design ideas.
                             </p>
@@ -147,42 +125,42 @@ export default function ContactSection() {
                     >
                         {/* Name */}
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs font-mono uppercase tracking-widest text-gray-500">
+                            <label className="text-xs font-mono uppercase tracking-widest text-ink-3">
                                 Name
                             </label>
                             <input
                                 type="text"
                                 name="entry.835553833"
                                 required
-                                className="w-full bg-[#0e1011] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition"
+                                className="w-full bg-paper-2 border border-line rounded-md px-4 py-3 text-sm text-ink placeholder-ink-3 focus:outline-none focus:border-accent transition"
                                 placeholder="Your name"
                             />
                         </div>
 
                         {/* Email */}
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs font-mono uppercase tracking-widest text-gray-500">
+                            <label className="text-xs font-mono uppercase tracking-widest text-ink-3">
                                 Email
                             </label>
                             <input
                                 type="email"
                                 name="entry.2032932832"
                                 required
-                                className="w-full bg-[#0e1011] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition"
+                                className="w-full bg-paper-2 border border-line rounded-md px-4 py-3 text-sm text-ink placeholder-ink-3 focus:outline-none focus:border-accent transition"
                                 placeholder="name@example.com"
                             />
                         </div>
 
                         {/* Message */}
                         <div className="flex flex-col gap-2">
-                            <label className="text-xs font-mono uppercase tracking-widest text-gray-500">
+                            <label className="text-xs font-mono uppercase tracking-widest text-ink-3">
                                 Message
                             </label>
                             <textarea
                                 name="entry.675359573"
                                 required
                                 rows={4}
-                                className="w-full bg-[#0e1011] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition resize-none"
+                                className="w-full bg-paper-2 border border-line rounded-md px-4 py-3 text-sm text-ink placeholder-ink-3 focus:outline-none focus:border-accent transition resize-none"
                                 placeholder="Your message"
                             />
                         </div>
@@ -190,14 +168,14 @@ export default function ContactSection() {
                         {/* Button */}
                         <button
                             type="submit"
-                            className="w-full bg-white text-black font-semibold py-3 rounded-md text-sm hover:bg-gray-200 transition-colors"
+                            className="w-full bg-ink text-paper font-semibold py-3 rounded-md text-sm hover:bg-accent transition-colors"
                         >
                             Send Message
                         </button>
 
                         {/* Success message */}
                         {success && (
-                            <p className="text-sm text-gray-300 pt-2">
+                            <p className="text-sm text-accent-2 pt-2">
                                 Message sent successfully. I will get back to you.
                             </p>
                         )}

@@ -27,37 +27,37 @@ export default async function AchievementDetailPage({ params }) {
   const tags = parseTags(fm.tags)
 
   return (
-    <main className="bg-[#050505] min-h-screen text-white">
-      <div className="max-w-2xl mx-auto px-6 py-20">
-        <Link href="/achievements" className="inline-flex items-center gap-2 text-[12px] text-[#536475] hover:text-white transition-colors mb-10">
+    <main className="bg-paper min-h-screen text-ink">
+      <div className="max-w-2xl mx-auto px-6 pt-28 pb-20">
+        <Link href="/achievements" className="inline-flex items-center gap-2 text-[12px] text-ink-2 hover:text-accent transition-colors mb-10">
           ← All achievements
         </Link>
         {fm.category && (
-          <p className="text-[11px] font-mono uppercase tracking-widest text-[#8496a8] mb-3">{fm.category}</p>
+          <p className="text-[11px] font-mono uppercase tracking-widest text-accent-2 mb-3">{fm.category}</p>
         )}
-        <h1 className="text-3xl font-bold tracking-tight mb-3">{fm.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-3">{fm.title}</h1>
         {fm.issuer && (
-          <p className="text-[#8496a8] mb-2">
+          <p className="text-ink-2 mb-2">
             {fm.issuer_url
-              ? <a href={fm.issuer_url} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{fm.issuer} ↗</a>
+              ? <a href={fm.issuer_url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{fm.issuer} ↗</a>
               : fm.issuer}
           </p>
         )}
-        {displayDate && <p className="font-mono text-[11px] text-[#536475] mb-6">{displayDate}</p>}
+        {displayDate && <p className="font-mono text-[11px] text-ink-3 mb-6">{displayDate}</p>}
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8">
             {tags.map(tag => (
-              <span key={tag} className="text-[11px] px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#536475]">{tag}</span>
+              <span key={tag} className="text-[11px] px-2 py-0.5 rounded-full bg-paper-2 border border-line text-ink-2">{tag}</span>
             ))}
           </div>
         )}
         {fm.credential_url && (
           <a href={fm.credential_url} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-full border border-white/10 text-[#8496a8] hover:text-white hover:border-white/20 transition-all mb-10">
+            className="inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-full border border-ink/25 text-ink-2 hover:text-accent hover:border-accent/50 transition-all mb-10">
             View Credential ↗
           </a>
         )}
-        <div className="prose prose-invert prose-sm max-w-none project-content"
+        <div className="max-w-none project-content"
           dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </div>
     </main>

@@ -38,11 +38,14 @@ export default function ProjectsPage() {
           strategy="afterInteractive"
         />
       ))}
-      <section className="w-full min-h-screen bg-[#050505] text-white py-24 px-6 md:px-12 lg:px-24">
+      <section className="w-full min-h-screen bg-paper text-ink pt-28 pb-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-6 md:mb-12">
-            <p className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-gray-500">Projects</p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">All Projects</h1>
+          <div className="mb-10 md:mb-14">
+            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-accent-2 mb-4">
+              <span className="h-px w-8 bg-accent" />
+              Projects
+            </div>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[0.95]">All Projects<span className="text-accent">.</span></h1>
           </div>
 
           <ProjectsListClient projects={projects} />

@@ -15,10 +15,10 @@ export default function SocialMediaLinks({ className = "" }) {
                     rel="noopener noreferrer"
                     aria-label={link.name}
                     title={link.name}
-                    className={`text-gray-400 hover:text-white flex justify-center items-center transition-colors p-1 rounded ${className}`}
+                    className={`group flex justify-center items-center transition-colors p-1 rounded ${className}`}
                 >
                     <span className="sr-only">{link.name}</span>
-                    <SocialIcon iconName={link.icon} className="w-6 h-6 fill-white" />
+                    <SocialIcon iconName={link.icon} className="w-6 h-6 fill-ink-3 group-hover:fill-accent transition-colors" />
                 </a>
             ))}
         </>

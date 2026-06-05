@@ -41,37 +41,38 @@ export default function ArticlesSection({ articles }) {
   }, [displayedArticles]);
 
   return (
-    <section ref={containerRef} className="w-full bg-[#050505] text-white py-16 px-6 md:px-12 lg:px-24">
+    <section ref={containerRef} className="w-full bg-paper-2 text-ink py-20 md:py-28 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-gray-500">
-              Latest Articles
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
-              Articles &amp; <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-600 italic">Insights.</span>
+        <div className="flex flex-col md:flex-row justify-between md:items-end mb-12 md:mb-16 gap-6">
+          <div>
+            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-accent-2 mb-4">
+              <span className="h-px w-8 bg-accent" />
+              Writing
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95]">
+              Articles &amp; Insights<span className="text-accent">.</span>
             </h2>
           </div>
 
           {hasMore && (
-            <Link href="/articles" className="inline-flex items-center gap-3 group">
-              <span className="text-xs font-mono uppercase tracking-widest border-b border-white/20 pb-0.5 group-hover:border-white transition-colors duration-500">
+            <Link href="/articles" className="inline-flex items-center gap-3 group w-fit">
+              <span className="text-xs font-mono uppercase tracking-widest text-ink-2 border-b-2 border-accent/40 pb-0.5 group-hover:border-accent transition-colors duration-300">
                 View All Articles
               </span>
-              <div className="w-6 h-px bg-white/20 group-hover:bg-white group-hover:w-12 transition-all duration-500"></div>
+              <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           )}
         </div>
 
         {/* Articles List */}
-        <div className="space-y-4 md:space-y-6">
+        <div className="space-y-4 md:space-y-5">
           {displayedArticles.map((article, index) => (
             <Link
               key={article.slug}
               href={`/articles/${article.slug}`}
               ref={(el) => (articlesRef.current[index] = el)}
-              className="group flex flex-col sm:flex-row gap-4 p-4 md:p-6 rounded-lg border border-white/5 bg-white/1 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
+              className="group flex flex-col sm:flex-row gap-4 p-4 md:p-6 rounded-lg border border-line bg-paper hover:border-accent/50 hover:shadow-[5px_5px_0_0_var(--color-panel)] transition-all duration-300"
             >
               {/* Image */}
               {article.frontmatter.image && (
@@ -79,7 +80,7 @@ export default function ArticlesSection({ articles }) {
                   <img
                     src={article.frontmatter.image}
                     alt={article.frontmatter.title}
-                    className="w-full h-24 sm:h-32 object-contain rounded-md grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="w-full h-24 sm:h-32 object-contain rounded-md border border-line"
                   />
                 </div>
               )}
@@ -87,19 +88,19 @@ export default function ArticlesSection({ articles }) {
               {/* Content */}
               <div className="flex-1 flex flex-col justify-between min-w-0">
                 <div className="space-y-2">
-                  <h3 className="text-lg md:text-xl font-semibold tracking-tight group-hover:text-alabaster_grey-300 transition-colors line-clamp-2">
+                  <h3 className="text-lg md:text-xl font-semibold tracking-tight text-ink group-hover:text-accent-2 transition-colors line-clamp-2">
                     {article.frontmatter.title}
                   </h3>
-                  <p className="text-gray-400 text-sm line-clamp-2 group-hover:text-gray-300 transition-colors">
+                  <p className="text-ink-2 text-sm line-clamp-2 transition-colors">
                     {article.frontmatter.description}
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-3 pt-3 sm:pt-0 border-t border-white/5 sm:border-t-0">
-                  <span className="text-xs text-gray-500 font-mono">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-3 pt-3 sm:pt-0 border-t border-line sm:border-t-0">
+                  <span className="text-xs text-ink-3 font-mono">
                     {article.displayDate}
                   </span>
-                  <span className="text-xs text-alabaster_grey-300/70 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-xs text-accent-2 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
                     Read more →
                   </span>
                 </div>

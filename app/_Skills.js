@@ -192,36 +192,37 @@ export default function Skills({ className = '' }) {
   return (
     <section
       id="skills"
-      className={`w-full bg-[#050505] text-white py-16 px-6 md:px-12 lg:px-24 ${className}`}
+      className={`w-full bg-paper-2 text-ink py-20 md:py-28 px-6 md:px-12 lg:px-24 ${className}`}
       aria-labelledby="skills-heading"
     >
       <div className="max-w-7xl mx-auto">
+        <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-accent-2 mb-4">
+          <span className="h-px w-8 bg-accent" />
+          The Toolbox
+        </div>
         <h2
           id="skills-heading"
-          className="text-3xl sm:text-4xl md:text-5xl pr-4 font-bold tracking-tighter mb-10 flex items-center gap-4"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-12 leading-[0.95]"
         >
-          Core{' '}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-600 italic">
-            Skills.
-          </span>
+          Core Skills<span className="text-accent">.</span>
         </h2>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-7">
           {Object.entries(sections).map(([title, skills]) => (
             <div key={title} className="flex flex-col gap-3">
-              <h3 className="text-[10px] uppercase tracking-widest text-gray-500 font-mono pb-2 border-b border-white/10">
+              <h3 className="text-[10px] uppercase tracking-[0.2em] text-ink-3 font-mono pb-2 border-b border-line">
                 {title}
               </h3>
               <div className="flex flex-wrap gap-2 pt-1">
                 {skills.map((skill) => (
                   <div
                     key={skill}
-                    className="inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-[#111] hover:bg-[#222] border border-white/10 transition-colors group cursor-default"
+                    className="inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-paper border border-line hover:border-accent/60 hover:bg-accent-tint transition-colors group cursor-default"
                   >
-                    <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center p-0.75 shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="w-5 h-5 rounded-full bg-paper-2 border border-line flex items-center justify-center p-0.75 shrink-0 group-hover:scale-105 transition-transform">
                       <SkillIcon skill={skill} />
                     </div>
-                    <span className="text-sm font-medium text-gray-200">{skill}</span>
+                    <span className="text-sm font-medium text-ink">{skill}</span>
                   </div>
                 ))}
               </div>

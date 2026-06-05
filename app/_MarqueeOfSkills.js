@@ -171,20 +171,20 @@ export default function MarqueeOfSkills() {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-[#050505] overflow-hidden py-6 border-y border-gray-600"
+      className="w-full bg-ink text-paper overflow-hidden py-5 border-y-2 border-accent"
     >
       <div
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         onMouseDown={handleMouseDown}
-        className="flex whitespace-nowrap cursor-grab active:cursor-grabbing"
+        className="flex whitespace-nowrap cursor-grab active:cursor-grabbing select-none"
       >
         {skills.concat(skills).map((skill, i) => (
           <h4
             key={i}
-            className="marquee-item text-gray-600 text-lg md:text-xl font-medium mx-2"
+            className="marquee-item text-paper/85 text-lg md:text-2xl font-bold tracking-tight mx-2"
           >
-            {skill} <span className="mx-2">-:-</span>
+            {skill} <span className="mx-3 text-accent">◆</span>
           </h4>
         ))}
       </div>

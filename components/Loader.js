@@ -78,11 +78,13 @@ export default function Loader({ onComplete } = {}) {
   }, [fireComplete]);
 
   return (
-    <div
-      ref={containerRef}
-      className="flex items-center justify-center w-[50vw] max-w-300"
-    >
-      <AbrarLineArt width="50%" height="50%" />
+    <div ref={containerRef} className="flex flex-col items-center justify-center gap-5 px-8">
+      <div className="w-[68vw] max-w-150 text-ink">
+        <AbrarLineArt width="100%" height="auto" />
+      </div>
+      <p className="font-mono text-[10px] tracking-[0.4em] uppercase text-accent-2">
+        Portfolio<span className="text-ink-3"> / loading</span>
+      </p>
     </div>
   );
 }

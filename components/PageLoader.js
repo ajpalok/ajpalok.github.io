@@ -1,42 +1,50 @@
 'use client'
 
 import Loader from '@/components/Loader';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+/**
+ * The intro animation is meant to play once per visit, not on every page
+ * change. Because the site is a static export, each route is a separate HTML
+ * document and navigations are full loads, so we persist a flag in
+ * sessionStorage. A pre-paint script in <head> (see layout.js) hides the
+ * overlay via CSS the instant the flag exists, so repeat loads show no flash.
+ */
 export default function PageLoader({ children }) {
-  const [loaded, setLoaded] = useState(false);
-  const [animationDone, setAnimationDone] = useState(false);
+  // 'pending' (SSR / first paint) -> 'play' -> 'leaving' -> 'done'
+  const [phase, setPhase] = useState('pending');
+  const safety = useRef(null);
 
   useEffect(() => {
-    const onLoad = () => setLoaded(true);
-    if (document.readyState === 'complete') {
-      setLoaded(true);
-    } else {
-      window.addEventListener('load', onLoad);
-      return () => window.removeEventListener('load', onLoad);
+    let played = false;
+    try { played = sessionStorage.getItem('introPlayed') === '1'; } catch {}
+    if (played) {
+      setPhase('done');
+      return;
     }
+    setPhase('play');
+    // Never let the intro trap the page, even if onComplete is missed.
+    safety.current = setTimeout(() => finish(), 9000);
+    return () => clearTimeout(safety.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fallbacks to avoid the loader being stuck indefinitely
-  useEffect(() => {
-    const t = setTimeout(() => setLoaded(true), 10000);
-    return () => clearTimeout(t);
+  const finish = useCallback(() => {
+    clearTimeout(safety.current);
+    try { sessionStorage.setItem('introPlayed', '1'); } catch {}
+    try { document.documentElement.classList.add('intro-played'); } catch {}
+    setPhase((p) => (p === 'done' ? p : 'leaving'));
+    setTimeout(() => setPhase('done'), 600);
   }, []);
 
-  useEffect(() => {
-    const t = setTimeout(() => setAnimationDone(true), 8000);
-    return () => clearTimeout(t);
-  }, []);
-
-  const shouldShow = !(loaded && animationDone);
-
-  if (shouldShow) {
-    return (
-      <div className="fixed inset-0 z-50 bg-white flex items-center justify-center w-full">
-        <Loader onComplete={() => setAnimationDone(true)} />
-      </div>
-    );
-  }
-
-  return children;
+  return (
+    <>
+      {children}
+      {phase !== 'done' && (
+        <div id="page-loader-overlay" className={phase === 'leaving' ? 'is-leaving' : ''}>
+          <Loader onComplete={finish} />
+        </div>
+      )}
+    </>
+  );
 }

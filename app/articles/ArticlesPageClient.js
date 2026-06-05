@@ -39,23 +39,24 @@ export default function ArticlesPageClient({ articles }) {
   }, [currentPage]);
 
   return (
-    <main className="w-full bg-[#050505] text-white min-h-screen py-24 px-6 md:px-12 lg:px-24">
+    <main className="w-full bg-paper text-ink min-h-screen pt-28 pb-24 px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-12 md:mb-16">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-ink-2 hover:text-accent transition-colors mb-8">
             <span>←</span>
             <span className="text-sm font-mono uppercase tracking-wider">Back to Home</span>
           </Link>
 
           <div className="space-y-4">
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-gray-500">
+            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-accent-2">
+              <span className="h-px w-8 bg-accent" />
               All Articles
-            </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter">
-              Articles &amp; <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-600 italic">Insights</span>
+            </div>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[0.95]">
+              Articles &amp; Insights<span className="text-accent">.</span>
             </h1>
-            <p className="text-gray-400 max-w-2xl mt-6">
+            <p className="text-ink-2 max-w-2xl mt-6">
               Browse through {articles.length} articles on development, design, and technology insights.
             </p>
           </div>
@@ -68,15 +69,15 @@ export default function ArticlesPageClient({ articles }) {
               key={article.slug}
               href={`/articles/${article.slug}`}
               ref={(el) => (articlesRef.current[index] = el)}
-              className="group flex flex-col h-full overflow-hidden rounded-lg border border-white/5 bg-white/[0.01] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
+              className="group flex flex-col h-full overflow-hidden rounded-lg border border-line bg-paper-2 hover:border-accent/50 hover:shadow-[5px_5px_0_0_var(--color-panel)] transition-all duration-300"
             >
               {/* Image */}
               {article.frontmatter.image && (
-                <div className="w-full h-48 overflow-hidden bg-[#111]">
+                <div className="w-full h-48 overflow-hidden bg-panel border-b border-line">
                   <img
                     src={article.frontmatter.image}
                     alt={article.frontmatter.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               )}
@@ -84,17 +85,17 @@ export default function ArticlesPageClient({ articles }) {
               {/* Content */}
               <div className="flex-1 flex flex-col p-6">
                 <div className="flex-1">
-                  <h3 className="text-lg md:text-xl font-semibold tracking-tight group-hover:text-alabaster_grey-300 transition-colors mb-2 line-clamp-3">
+                  <h3 className="text-lg md:text-xl font-semibold tracking-tight text-ink group-hover:text-accent-2 transition-colors mb-2 line-clamp-3">
                     {article.frontmatter.title}
                   </h3>
-                  <p className="text-gray-400 text-sm line-clamp-3 group-hover:text-gray-300 transition-colors">
+                  <p className="text-ink-2 text-sm line-clamp-3 transition-colors">
                     {article.frontmatter.description}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
-                  <span className="text-xs text-gray-500 font-mono">{article.displayDate}</span>
-                  <span className="text-xs text-alabaster_grey-300/70 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-line">
+                  <span className="text-xs text-ink-3 font-mono">{article.displayDate}</span>
+                  <span className="text-xs text-accent-2 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
                     Read →
                   </span>
                 </div>
@@ -109,7 +110,7 @@ export default function ArticlesPageClient({ articles }) {
             {currentPage > 1 && (
               <Link
                 href={`/articles?page=${currentPage - 1}`}
-                className="px-4 py-2 rounded border border-white/10 hover:bg-white/5 transition-colors text-sm font-mono"
+                className="px-4 py-2 rounded border border-line hover:border-accent/60 transition-colors text-sm font-mono text-ink-2"
               >
                 ← Previous
               </Link>
@@ -122,8 +123,8 @@ export default function ArticlesPageClient({ articles }) {
                   href={`/articles?page=${page}`}
                   className={`w-10 h-10 flex items-center justify-center rounded text-sm font-mono transition-colors ${
                     page === currentPage
-                      ? 'bg-alabaster_grey-500/20 border border-alabaster_grey-500/50 text-alabaster_grey-300'
-                      : 'border border-white/10 hover:bg-white/5'
+                      ? 'bg-ink text-paper border border-ink'
+                      : 'border border-line text-ink-2 hover:border-accent/60'
                   }`}
                 >
                   {page}
@@ -134,7 +135,7 @@ export default function ArticlesPageClient({ articles }) {
             {currentPage < totalPages && (
               <Link
                 href={`/articles?page=${currentPage + 1}`}
-                className="px-4 py-2 rounded border border-white/10 hover:bg-white/5 transition-colors text-sm font-mono"
+                className="px-4 py-2 rounded border border-line hover:border-accent/60 transition-colors text-sm font-mono text-ink-2"
               >
                 Next →
               </Link>

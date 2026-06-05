@@ -1,339 +1,192 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-/* Custom color scheme `.theme-abrar` class on
-   <html> or <body> to enable this palette. */
+/* ───────────────────────────────────────────────────────────────────────────
+   Abrar Jahin — warm "paper & ink" identity, drawn from the brand cover:
+   cream paper, warm black ink, one committed burnt-orange (#ca3600).
+   Color is voice here; neutrals are tinted toward the brand warm.
+   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Theme: abrar */
-.theme-abrar {
-  --color-bright_snow-100: #29323a;
-  --color-bright_snow-200: #536475;
-  --color-bright_snow-300: #8496a8;
-  --color-bright_snow-400: #bfc8d1;
-  --color-bright_snow-500: #f8f9fa;
-  --color-bright_snow-600: #fafbfc;
-  --color-bright_snow-700: #fbfcfc;
-  --color-bright_snow-800: #fdfdfd;
-  --color-bright_snow-900: #fefefe;
+@theme {
+  /* Surfaces — warm cream paper, never pure white */
+  --color-paper: oklch(0.968 0.009 74);        /* base background  ~#f7f2ea */
+  --color-paper-2: oklch(0.944 0.013 70);      /* raised panel     ~#efe7da */
+  --color-panel: oklch(0.912 0.018 67);        /* inset / card     ~#e6dac9 */
+  --color-panel-2: oklch(0.875 0.022 64);      /* deeper inset     ~#dccab3 */
 
-  --color-platinum-100: #282f37;
-  --color-platinum-200: #505f6e;
-  --color-platinum-300: #7c8ea0;
-  --color-platinum-400: #b3bec8;
-  --color-platinum-500: #e9ecef;
-  --color-platinum-600: #eef1f3;
-  --color-platinum-700: #f3f4f6;
-  --color-platinum-800: #f7f8f9;
-  --color-platinum-900: #fbfbfc;
+  /* Ink — warm near-black, never pure black */
+  --color-ink: oklch(0.245 0.013 52);          /* primary text     ~#241d18 */
+  --color-ink-2: oklch(0.455 0.019 50);        /* muted body       ~#5a4d42 */
+  --color-ink-3: oklch(0.605 0.020 56);        /* labels / faint   ~#8a7b6c */
+  --color-line: oklch(0.852 0.020 62);         /* hairline border  ~#ddccb8 */
 
-  --color-alabaster_grey-100: #272d34;
-  --color-alabaster_grey-200: #4e5b67;
-  --color-alabaster_grey-300: #788899;
-  --color-alabaster_grey-400: #abb6c0;
-  --color-alabaster_grey-500: #dee2e6;
-  --color-alabaster_grey-600: #e5e9ec;
-  --color-alabaster_grey-700: #eceef1;
-  --color-alabaster_grey-800: #f2f4f5;
-  --color-alabaster_grey-900: #f9f9fa;
-
-  --color-pale_slate-100: #242a30;
-  --color-pale_slate-200: #495561;
-  --color-pale_slate-300: #6d7f91;
-  --color-pale_slate-400: #9da9b5;
-  --color-pale_slate-500: #ced4da;
-  --color-pale_slate-600: #d7dce1;
-  --color-pale_slate-700: #e1e5e9;
-  --color-pale_slate-800: #ebeef0;
-  --color-pale_slate-900: #f5f6f8;
-
-  --color-pale_slate_alt-100: #202428;
-  --color-pale_slate_alt-200: #404850;
-  --color-pale_slate_alt-300: #616d79;
-  --color-pale_slate_alt-400: #85919d;
-  --color-pale_slate_alt-500: #adb5bd;
-  --color-pale_slate_alt-600: #bdc4ca;
-  --color-pale_slate_alt-700: #ced3d8;
-  --color-pale_slate_alt-800: #dee1e5;
-  --color-pale_slate_alt-900: #eff0f2;
-
-  --color-slate_grey-100: #161819;
-  --color-slate_grey-200: #2c2f32;
-  --color-slate_grey-300: #41474b;
-  --color-slate_grey-400: #575e64;
-  --color-slate_grey-500: #6c757d;
-  --color-slate_grey-600: #899199;
-  --color-slate_grey-700: #a7adb2;
-  --color-slate_grey-800: #c4c8cc;
-  --color-slate_grey-900: #e2e4e5;
-
-  --color-iron_grey-100: #0e1011;
-  --color-iron_grey-200: #1d2022;
-  --color-iron_grey-300: #2b2f34;
-  --color-iron_grey-400: #3a3f45;
-  --color-iron_grey-500: #495057;
-  --color-iron_grey-600: #68727d;
-  --color-iron_grey-700: #8c959f;
-  --color-iron_grey-800: #b2b9bf;
-  --color-iron_grey-900: #d9dcdf;
-
-  --color-gunmetal-100: #0b0c0d;
-  --color-gunmetal-200: #15171a;
-  --color-gunmetal-300: #202327;
-  --color-gunmetal-400: #2a2f34;
-  --color-gunmetal-500: #343a40;
-  --color-gunmetal-600: #58626c;
-  --color-gunmetal-700: #7d8995;
-  --color-gunmetal-800: #a9b0b8;
-  --color-gunmetal-900: #d4d8dc;
-
-  --color-carbon_black-100: #070808;
-  --color-carbon_black-200: #0e0f11;
-  --color-carbon_black-300: #141719;
-  --color-carbon_black-400: #1b1f22;
-  --color-carbon_black-500: #212529;
-  --color-carbon_black-600: #49525b;
-  --color-carbon_black-700: #6f7d8b;
-  --color-carbon_black-800: #9fa8b2;
-  --color-carbon_black-900: #cfd4d8;
-
-  /* semantic mappings */
-  --background: var(--color-bright_snow-500);
-  --foreground: var(--color-carbon_black-500);
+  /* Accent — the committed burnt orange */
+  --color-accent: oklch(0.620 0.172 44);       /* fills / marks    ~#d24e1d */
+  --color-accent-2: oklch(0.520 0.156 42);     /* text on paper (AA) ~#ad3d15 */
+  --color-accent-ink: oklch(0.380 0.120 40);   /* deepest, on tint   ~#7e2c0f */
+  --color-accent-tint: oklch(0.930 0.040 56);  /* faint orange wash ~#f6e3d4 */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
-.glassDisplacementFilter {
-  --tw-bg-opacity: 0.5;
-  filter: drop-shadow(-8px -10px 46px #0000005f) url(#displacementFilter);
-  backdrop-filter: brightness(1.1) blur(2px);
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
-.glassDisplaceTurbulenceFilter {
-  --tw-bg-opacity: 0.5;
-  filter: drop-shadow(-8px -10px 46px #0000005f) url(#displaceTurbulenceFilter);
-  backdrop-filter: brightness(1.1) blur(2px);
-}
-
-/* Custom fade-in and scale animation */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+* {
+  border-color: var(--color-line);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Scoped styling for auto-generated project markdown content */
-.project-content {
-  --pc-text: #e6eef8;
-  --pc-muted: #9aa6b2;
-  --pc-bg: transparent;
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
 }
 
-.project-content p {
-  color: var(--pc-text);
+/* ── Texture utilities: blueprint grid + riso halftone ─────────────────────── */
+.bg-blueprint {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-accent) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-accent) 9%, transparent) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.bg-blueprint-fine {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-ink) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-ink) 5%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-halftone {
+  background-image: radial-gradient(color-mix(in oklab, var(--color-accent) 26%, transparent) 1.1px, transparent 1.5px);
+  background-size: 9px 9px;
+}
+
+/* Ink line-art sits on paper: white plate drops out via multiply */
+.ink-on-paper {
+  mix-blend-mode: multiply;
+}
+
+/* ── Page-load intro (plays once per browser-tab session) ──────────────────── */
+#page-loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#page-loader-overlay.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+/* Pre-paint guard: if the intro already ran this session, never show it again */
+html.intro-played #page-loader-overlay {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page-loader-overlay { transition: none; }
+}
+
+/* ── Entrance helper ───────────────────────────────────────────────────────── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in {
+  animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Long-form content (project + article markdown) — recolored for paper.
+   ─────────────────────────────────────────────────────────────────────────── */
+.project-content,
+.article-content {
+  --pc-text: var(--color-ink);
+  --pc-muted: var(--color-ink-2);
+  color: var(--color-ink);
+}
+
+.project-content p,
+.article-content p {
+  color: var(--color-ink-2);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
 .project-content h1,
 .project-content h2,
-.project-content h3 {
-  color: #fff;
-  margin-top: 1.25rem;
-  margin-bottom: 0.75rem;
+.project-content h3,
+.article-content h2,
+.article-content h3 {
+  color: var(--color-ink);
+  margin-top: 1.5rem;
+  margin-bottom: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
+.article-content h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.5rem;
+}
+.article-content h3 { font-size: 1.35rem; }
+
 .project-content ul,
-.project-content ol {
+.project-content ol,
+.article-content ul,
+.article-content ol {
   margin-left: 1.25rem;
-  color: var(--pc-text);
+  color: var(--color-ink-2);
   margin-bottom: 1rem;
 }
+.article-content li { margin-bottom: 0.5rem; }
 
 .project-content ul li::marker,
 .project-content ol li::marker {
-  color: var(--pc-text);
-  font-size: 1.2em;
-}
-
-.project-content blockquote {
-  border-left: 4px solid rgba(255,255,255,0.06);
-  padding-left: 1rem;
-  color: var(--pc-muted);
-  font-style: italic;
-  margin: 1rem 0;
-}
-
-/* Code blocks */
-.project-content pre {
-  background: #0b0c0d;
-  color: #e6edf3;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow: auto;
-  margin: 1rem 0;
-}
-
-.project-content code {
-  background: rgba(255,255,255,0.03);
-  color: #e6edf3;
-  padding: 0.15rem 0.4rem;
-  border-radius: 0.35rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Droid Sans Mono", "Courier New", monospace;
-  font-size: 0.92em;
-}
-
-/* highlight.js base styles inside project content */
-.project-content .hljs {
-  background: transparent;
-  color: #e6edf3;
-}
-.project-content .hljs-comment,
-.project-content .hljs-quote {
-  color: #9aa6b2;
-}
-.project-content .hljs-keyword,
-.project-content .hljs-selector-tag,
-.project-content .hljs-subst {
-  color: #ff7b72;
-}
-.project-content .hljs-literal,
-.project-content .hljs-number,
-.project-content .hljs-tag .hljs-attr {
-  color: #ffb86b;
-}
-.project-content .hljs-string,
-.project-content .hljs-doctag {
-  color: #7ee787;
-}
-.project-content .hljs-title,
-.project-content .hljs-section,
-.project-content .hljs-selector-id {
-  color: #ffd580;
-}
-.project-content .hljs-name,
-.project-content .hljs-attr {
-  color: #ffd580;
-}
-.project-content .hljs-emphasis {
-  font-style: italic;
-}
-.project-content .hljs-strong {
-  font-weight: 700;
-}
-
-/* Ensure list markers are visible inside Tailwind `prose`/`prose-invert` contexts */
-.project-content.prose li::marker,
-.project-content.prose-invert li::marker,
-.project-content.prose ul li::marker,
-.project-content.prose-invert ul li::marker,
-.project-content.prose ol li::marker,
-.project-content.prose-invert ol li::marker {
-  color: var(--pc-text) !important;
-  opacity: 1 !important;
+  color: var(--color-accent-2);
   font-size: 1.05em;
-  font-weight: 600;
 }
 
-/* Article content styling (moved from page-local styles) */
-.article-content h2 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.5rem;
-}
-
-.article-content h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #e5e7eb;
-}
-
-.article-content p {
-  margin-bottom: 1rem;
-  line-height: 1.8;
-}
-
-.article-content ul,
-.article-content ol {
-  margin-bottom: 1rem;
-  margin-left: 1.5rem;
-}
-
-.article-content li {
-  margin-bottom: 0.5rem;
-}
-
+.project-content blockquote,
 .article-content blockquote {
-  border-left: 4px solid #0ea5e9;
+  border-left: 3px solid var(--color-accent);
   padding-left: 1rem;
-  margin: 1.5rem 0;
-  color: #d1d5db;
+  color: var(--color-ink-2);
   font-style: italic;
-}
-
-.article-content code {
-  background-color: rgba(14, 165, 233, 0.1);
-  color: #0ea5e9;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.9em;
-}
-
-.article-content pre {
-  background-color: #0f0f0f;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  overflow-x: auto;
-}
-
-.article-content pre code {
-  background-color: transparent;
-  color: inherit;
-  padding: 0;
+  margin: 1.25rem 0;
 }
 
 .article-content a {
-  color: #0ea5e9;
+  color: var(--color-accent-2);
   text-decoration: underline;
+  text-underline-offset: 2px;
   transition: color 0.2s;
 }
-
-.article-content a:hover {
-  color: #0284c7;
-}
+.article-content a:hover { color: var(--color-accent-ink); }
 
 .article-content img {
   max-width: 100%;
   height: auto;
   border-radius: 0.5rem;
   margin: 1.5rem 0;
+  border: 1px solid var(--color-line);
 }
 
 .article-content table {
@@ -341,40 +194,60 @@ body {
   border-collapse: collapse;
   margin-bottom: 1rem;
 }
-
 .article-content th {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--color-paper-2);
+  border: 1px solid var(--color-line);
   padding: 0.75rem;
   text-align: left;
   font-weight: 600;
 }
-
 .article-content td {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-line);
   padding: 0.75rem;
 }
 
-/* highlight.js (simple dark theme) */
-.article-content .hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 1rem;
-  background: #0b0c0d;
-  color: #e6edf3;
-  border-radius: 0.5rem;
+/* Inline code: warm tinted chip */
+.project-content code,
+.article-content code {
+  background: var(--color-accent-tint);
+  color: var(--color-accent-ink);
+  padding: 0.12rem 0.4rem;
+  border-radius: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
 }
-.article-content .hljs-comment,
-.article-content .hljs-quote { color: #9aa6b2; }
-.article-content .hljs-keyword,
-.article-content .hljs-selector-tag,
-.article-content .hljs-subst { color: #ff7b72; }
-.article-content .hljs-literal,
-.article-content .hljs-number,
-.article-content .hljs-tag .hljs-attr { color: #ffb86b; }
-.article-content .hljs-string,
-.article-content .hljs-doctag { color: #7ee787; }
-.article-content .hljs-title,
-.article-content .hljs-section,
-.article-content .hljs-selector-id { color: #ffd580; }
 
+/* Code blocks: keep a deep ink slab for contrast on the page */
+.project-content pre,
+.article-content pre {
+  background: oklch(0.205 0.012 52);
+  color: #ebe5dd;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  overflow: auto;
+  margin: 1.25rem 0;
+  border: 1px solid var(--color-line);
+}
+.project-content pre code,
+.article-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* highlight.js inside the deep slab */
+.project-content .hljs,
+.article-content .hljs { background: transparent; color: #ebe5dd; }
+.project-content .hljs-comment, .project-content .hljs-quote,
+.article-content .hljs-comment, .article-content .hljs-quote { color: #9b8e80; }
+.project-content .hljs-keyword, .project-content .hljs-selector-tag, .project-content .hljs-subst,
+.article-content .hljs-keyword, .article-content .hljs-selector-tag, .article-content .hljs-subst { color: #ff9b6b; }
+.project-content .hljs-literal, .project-content .hljs-number, .project-content .hljs-tag .hljs-attr,
+.article-content .hljs-literal, .article-content .hljs-number { color: #ffc27a; }
+.project-content .hljs-string, .project-content .hljs-doctag,
+.article-content .hljs-string, .article-content .hljs-doctag { color: #c7d98a; }
+.project-content .hljs-title, .project-content .hljs-section, .project-content .hljs-selector-id,
+.article-content .hljs-title, .article-content .hljs-section, .article-content .hljs-selector-id { color: #ffd9a0; }
+.project-content .hljs-name, .project-content .hljs-attr { color: #ffd9a0; }
+.project-content .hljs-emphasis, .article-content .hljs-emphasis { font-style: italic; }
+.project-content .hljs-strong, .article-content .hljs-strong { font-weight: 700; }
