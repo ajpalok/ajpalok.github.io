@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { getAllArticles, getArticleBySlug, getArticleSlugs } from '@/lib/articles';
+import { getArticleBySlug, getArticleSlugs } from '@/lib/articles';
+import { SITE_CONFIG, buildUrl, getAbsoluteImageUrl } from '@/lib/config';
 import { parseTags } from '@/lib/utils';
+import ShareButtons from '@/components/ShareButtons';
 
 export async function generateStaticParams() {
   const slugs = await getArticleSlugs();
@@ -13,15 +15,44 @@ export async function generateMetadata({ params }) {
 
   if (!article) {
     return {
-      title: 'Article Not Found',
+      title: 'Article Not Found | Abrar Jahin',
       description: 'The article you are looking for does not exist.',
     };
   }
 
+  const pageUrl  = buildUrl(`/articles/${slug}/`);
+  const imageUrl = getAbsoluteImageUrl(
+    article.frontmatter.image || SITE_CONFIG.images.ogImage
+  );
+  const title    = `${article.frontmatter.title} | Abrar Jahin`;
+  const desc     = article.frontmatter.description || article.frontmatter.title;
+
   return {
-    title: `${article.frontmatter.title} | Abrar Jahin`,
-    description: article.frontmatter.description || `Read: ${article.frontmatter.title}`,
-    image: article.frontmatter.image,
+    title,
+    description: desc,
+    alternates: { canonical: pageUrl },
+    openGraph: {
+      title,
+      description: desc,
+      url: pageUrl,
+      type: 'article',
+      siteName: SITE_CONFIG.siteName,
+      publishedTime: article.frontmatter.date,
+      authors: [article.frontmatter.author || SITE_CONFIG.author.name],
+      images: [
+        {
+          url: imageUrl,
+          alt: article.frontmatter.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
+      images: [imageUrl],
+      creator: '@ajpalok',
+    },
   };
 }
 
@@ -43,13 +74,15 @@ export default async function ArticleDetailPage({ params }) {
     );
   }
 
-  const tags = parseTags(article.frontmatter.tags);
+  const tags    = parseTags(article.frontmatter.tags);
+  const pageUrl = buildUrl(`/articles/${slug}/`);
 
   return (
     <main className="w-full bg-paper text-ink min-h-screen">
       <article className="pt-28 pb-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-3xl mx-auto">
-          {/* Back Link */}
+
+          {/* Back link */}
           <Link href="/articles" className="inline-flex items-center gap-2 text-ink-2 hover:text-accent transition-colors mb-12">
             <span>←</span>
             <span className="text-sm font-mono uppercase tracking-wider">All Articles</span>
@@ -70,10 +103,18 @@ export default async function ArticleDetailPage({ params }) {
               {article.frontmatter.author && (
                 <span className="text-sm text-ink-3 font-mono">By {article.frontmatter.author}</span>
               )}
+              {/* Share inline in header so readers can share before reading */}
+              <div className="ml-auto">
+                <ShareButtons
+                  url={pageUrl}
+                  title={article.frontmatter.title}
+                  description={article.frontmatter.description || ''}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Featured Image */}
+          {/* Featured image */}
           {article.frontmatter.image && (
             <div className="w-full mb-12 rounded-lg overflow-hidden bg-panel border border-line">
               <img
@@ -103,12 +144,18 @@ export default async function ArticleDetailPage({ params }) {
             />
           </div>
 
-          {/* Footer */}
-          <div className="mt-16 pt-8 border-t border-line">
+          {/* Footer: share again + back link */}
+          <div className="mt-16 pt-8 border-t border-line space-y-8">
+            <ShareButtons
+              url={pageUrl}
+              title={article.frontmatter.title}
+              description={article.frontmatter.description || ''}
+            />
             <Link href="/articles" className="inline-flex items-center gap-2 text-ink-2 hover:text-accent transition-colors">
               <span className="text-sm font-mono uppercase tracking-wider">← Back to Articles</span>
             </Link>
           </div>
+
         </div>
       </article>
     </main>
