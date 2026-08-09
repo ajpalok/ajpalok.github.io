@@ -12,7 +12,7 @@
     "gsap": "^3.15.0",
     "highlight.js": "^11.11.1",
     "marked": "^18.0.2",
-    "next": "^16.2.6",
+    "next": "^16.3.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
