@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-[11px] uppercase tracking-[0.25em] font-mono text-ink-3">Resources</h3>
             <nav className="flex flex-col space-y-2.5">
-              <Link href="https://docs.google.com/document/d/1__6xncJIf7r54OtQyr2iMIp_feQ2gEZyfQzXjXKNCMY/edit?usp=portfolio" className="text-sm text-ink-2 hover:text-accent transition-colors w-fit">
+              <Link href="/resume" className="text-sm text-ink-2 hover:text-accent transition-colors w-fit">
                 Resume
               </Link>
               <Link href="/privacy-policy" className="text-sm text-ink-2 hover:text-accent transition-colors w-fit">

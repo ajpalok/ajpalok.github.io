@@ -18,7 +18,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "https://docs.google.com/document/d/1__6xncJIf7r54OtQyr2iMIp_feQ2gEZyfQzXjXKNCMY/edit?usp=portfolio", label: "Resume" },
+    { href: "/resume", label: "Resume" },
     { href: "/projects", label: "Projects" },
     { href: "/articles", label: "Articles" },
     { href: "/achievements", label: "Achievements" },
